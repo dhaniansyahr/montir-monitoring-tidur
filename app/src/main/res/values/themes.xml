@@ -1,9 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Montir" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Montir" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/bg_app</item>
+        <item name="colorPrimaryVariant">@color/bg_app</item>
+        <item name="colorOnPrimary">@color/bg_app</item>
     </style>
 
-    <style name="Theme.Montir" parent="Base.Theme.Montir" />
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#2697A8</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundColor">#121419</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+    </style>
+
+    <style name="SelectInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">#2697A8</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundColor">#121419</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+    </style>
+
 </resources>
