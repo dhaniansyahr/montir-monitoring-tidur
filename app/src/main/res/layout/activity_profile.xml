@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:background="@color/primary"
+    android:background="@color/bg_app"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity" >
@@ -227,7 +227,7 @@
         tools:layout_editor_absoluteY="164dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/profilbtn"
         android:layout_width="20dp"
         android:layout_height="28dp"
@@ -237,7 +237,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="371dp" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/accountbtn"
         android:layout_width="20dp"
         android:layout_height="28dp"
