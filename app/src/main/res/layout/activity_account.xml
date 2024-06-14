@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.profile.DetailProfileActivity"
+    tools:context=".view.account.AccountActivity"
     android:background="@color/bg_app">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/profilset"
+        android:text="@string/accountset"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/profilename"
+        android:layout_marginTop="30dp"
+        android:text="@string/username"
         android:alpha="0"
         tools:alpha="100"
         android:textColor="@color/white"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="@string/age_input"
+        android:text="@string/oldpass"
         android:alpha="0"
         tools:alpha="100"
         android:textColor="@color/white"
@@ -118,7 +118,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:alpha="0"
-        android:text="@string/gender"
+        android:text="@string/newpass"
         android:textColor="@color/white"
         tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +158,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:alpha="0"
-        android:text="@string/bmi"
+        android:text="@string/confirmpass"
         android:textColor="@color/white"
         tools:alpha="100"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,46 +191,6 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/stressTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:alpha="0"
-        android:text="@string/stress"
-        android:textColor="@color/white"
-        tools:alpha="100"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BMIEditTextLayout"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/stressEditTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:alpha="0"
-        android:textColor="@color/white"
-        app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stressTextView"
-        app:shapeAppearanceOverlay="@style/RoundedCornerTextInputLayout"
-        tools:alpha="100">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/stressEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input_background"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
@@ -247,7 +207,7 @@
         tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stressEditTextLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/BMIEditTextLayout" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -374,4 +334,5 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

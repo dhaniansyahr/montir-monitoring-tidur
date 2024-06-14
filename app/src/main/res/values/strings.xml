@@ -52,4 +52,20 @@
     <string name="gender">Gender</string>
     <string name="bmi">BMI Category</string>
     <string name="stress">Level Stress</string>
+    <string name="accountset">Account Setting</string>
+    <string name="username">Username / Email</string>
+    <string name="oldpass">Old Password</string>
+    <string name="newpass">New Password</string>
+    <string name="confirmpass">Confirm Password</string>
+    <string name="title_activity_statistic">StatisticActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="sleepDur">Sleep Durations</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="averagetitle">Average Sleep Time</string>
+    <string name="aveTime">8 Hours 5 Minutes</string>
+    <string name="detailStatistic">Detail Statistics</string>
 </resources>
