@@ -126,6 +126,10 @@ class SleepTrackerActivity : AppCompatActivity() {
             profileButton.setOnClickListener{
                 startActivity(Intent(this@SleepTrackerActivity, ProfileActivity::class.java))
             }
+
+            sleepButton.setOnClickListener{
+                startActivity(Intent(this@SleepTrackerActivity, SleepTrackerActivity::class.java))
+            }
         }
 
     }

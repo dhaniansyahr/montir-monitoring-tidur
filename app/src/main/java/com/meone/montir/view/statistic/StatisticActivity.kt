@@ -12,6 +12,7 @@ import com.meone.montir.databinding.ActivitySleepTrackerBinding
 import com.meone.montir.databinding.ActivityStatisticBinding
 import com.meone.montir.view.music.MusicActivity
 import com.meone.montir.view.sleep.SleepTrackerActivity
+import com.meone.montir.view.profile.ProfileActivity
 
 class StatisticActivity : AppCompatActivity() {
 
@@ -26,6 +27,22 @@ class StatisticActivity : AppCompatActivity() {
         binding.apply {
             sleepscoreBtn.setOnClickListener {
                 startActivity(Intent(this@StatisticActivity, SleepScoreActivity::class.java))
+            }
+            musicButton.setOnClickListener {
+                startActivity(Intent(this@StatisticActivity, MusicActivity::class.java))
+            }
+
+
+            statsButton.setOnClickListener{
+                startActivity(Intent(this@StatisticActivity, StatisticActivity::class.java))
+            }
+
+            profileButton.setOnClickListener{
+                startActivity(Intent(this@StatisticActivity, ProfileActivity::class.java))
+            }
+
+            sleepButton.setOnClickListener{
+                startActivity(Intent(this@StatisticActivity, SleepTrackerActivity::class.java))
             }
         }
     }
