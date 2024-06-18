@@ -5,11 +5,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivityMainBinding
+import com.meone.montir.view.sleep.SleepTrackerActivity
+import com.meone.montir.view.sleep.SleepTrackerViewModel
+import com.meone.montir.viewModel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel by viewModels<SleepTrackerViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+    
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         window.setFlags(
@@ -25,8 +33,15 @@ class MainActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (!isGetStartedActivityRunning()){
-                startActivity(Intent(this@MainActivity, GetStarted::class.java))
-                finish()
+                viewModel.getSession().observe(this) { user ->
+                    if (!user.isLogin) {
+                        startActivity(Intent(this, GetStarted::class.java))
+                        finish()
+                    } else {
+                        startActivity(Intent(this@MainActivity, SleepTrackerActivity::class.java))
+                        finish()
+                    }
+                }
             }
         }, 2000)
     }

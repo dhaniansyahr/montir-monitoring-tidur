@@ -2,7 +2,6 @@ package com.meone.montir.service
 
 data class Register(
     val username: String,
-    val email: String,
     val password: String,
     val age: Int,
     val city: String,

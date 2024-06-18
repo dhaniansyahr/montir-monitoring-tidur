@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.meone.montir.data.repository.UserRepository
 import com.meone.montir.di.Injection
+import com.meone.montir.view.sleep.SleepTrackerViewModel
 import com.meone.montir.viewModel.auth.LoginViewModel
 import com.meone.montir.viewModel.auth.RegisterViewModel
 
@@ -18,6 +19,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SleepTrackerViewModel::class.java) -> {
+                SleepTrackerViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

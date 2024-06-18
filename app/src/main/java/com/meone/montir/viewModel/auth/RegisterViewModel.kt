@@ -21,10 +21,9 @@ class RegisterViewModel: ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
-
-    fun register(username: String, email: String, password: String, age: Int, city: String, gender: Boolean, height: Int, weight: Int) {
+    fun register(username: String, password: String, age: Int, city: String, gender: Boolean, height: Int, weight: Int) {
         _isLoading.value = true
-        val post = Register(username, email, password, age, city, gender, height, weight)
+        val post = Register( username, password, age, city, gender, height, weight)
         val client = ApiConfig.getApiService().register(post)
 
         client.enqueue(object : Callback<RegisterResponse> {

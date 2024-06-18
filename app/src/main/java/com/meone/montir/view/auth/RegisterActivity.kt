@@ -92,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
             val gender = genderInput
 
             if (email.isNotEmpty() && password.isNotEmpty() && age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty() && city.isNotEmpty()) {
-                register(username = "Testing", email, password, age, height, weight, city, gender)
+                register( email, password, age, height, weight, city, gender)
             } else {
                 Toast.makeText(
                     this@RegisterActivity,
@@ -104,12 +104,12 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    private fun register(username: String, email: String, password: String, age: String, height: String, weight: String, city: String, gender: String) {
+    private fun register( email: String, password: String, age: String, height: String, weight: String, city: String, gender: String) {
         val ageInt = age.toInt()
         val heightInt = height.toInt()
         val weightInt = weight.toInt()
         val genderInt = if (gender == "Laki - Laki") true else false
-        viewModel.register(username, email, password, ageInt, city, genderInt, heightInt, weightInt)
+        viewModel.register( email, password, ageInt, city, genderInt, heightInt, weightInt)
 
     }
 }
