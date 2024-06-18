@@ -18,6 +18,8 @@ import com.meone.montir.helper.alarmNotification.NotificationAlarmScheduler
 import com.meone.montir.view.auth.LoginActivity
 import com.meone.montir.view.component.LoadingDialog
 import com.meone.montir.view.music.MusicActivity
+import com.meone.montir.view.profile.ProfileActivity
+import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import java.util.Calendar
 
@@ -56,7 +58,7 @@ class SleepTrackerActivity : AppCompatActivity() {
                 finish()
             }
         }
-        
+
         binding.apply {
             alarmBtn.setOnClickListener {
                 val timePickerDialog = TimePickerDialog(
@@ -114,6 +116,15 @@ class SleepTrackerActivity : AppCompatActivity() {
 
             musicButton.setOnClickListener {
                 startActivity(Intent(this@SleepTrackerActivity, MusicActivity::class.java))
+            }
+
+
+            statsButton.setOnClickListener{
+                startActivity(Intent(this@SleepTrackerActivity, StatisticActivity::class.java))
+            }
+
+            profileButton.setOnClickListener{
+                startActivity(Intent(this@SleepTrackerActivity, ProfileActivity::class.java))
             }
         }
 
