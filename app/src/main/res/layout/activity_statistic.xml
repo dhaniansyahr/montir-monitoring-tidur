@@ -545,13 +545,6 @@
                                                     android:layout_marginEnd="16dp"
                                                     android:textSize="14sp"
                                                     android:text="@string/battery" />
-
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
-                                                    android:textSize="14sp"
-                                                    android:text="@string/content_specs_battery" />
                                         </TableRow>
                                 </TableLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>

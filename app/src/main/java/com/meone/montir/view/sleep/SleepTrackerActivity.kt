@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivitySleepTrackerBinding
 import com.meone.montir.helper.alarmNotification.NotificationAlarmScheduler
 import com.meone.montir.view.auth.LoginActivity
+import com.meone.montir.view.profile.ProfileActivity
 import com.meone.montir.view.component.LoadingDialog
 import com.meone.montir.view.music.MusicActivity
-import com.meone.montir.view.profile.ProfileActivity
 import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import java.util.Calendar
