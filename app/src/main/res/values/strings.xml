@@ -39,4 +39,5 @@
     <string name="artist_music">Simple Plan</string>
     <string name="search_relate_music">Search relate music</string>
     <string name="banner_music">Banner Music</string>
+    <string name="username">Username</string>
 </resources>

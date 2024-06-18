@@ -9,5 +9,6 @@
             >
             <solid android:color="@color/gray" />
         </shape>
+        <bitmap android:src="@drawable/clear_night" />
     </item>
 </layer-list>
