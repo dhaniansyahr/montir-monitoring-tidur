@@ -18,6 +18,8 @@ import com.meone.montir.helper.alarmNotification.ReminderItem
 import com.meone.montir.view.auth.LoginActivity
 import com.meone.montir.view.component.StressDialog
 import com.meone.montir.view.music.MusicActivity
+import com.meone.montir.view.profile.ProfileActivity
+import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 import java.text.SimpleDateFormat
@@ -123,6 +125,15 @@ class SleepTrackerActivity : AppCompatActivity() {
 
             musicButton.setOnClickListener {
                 startActivity(Intent(this@SleepTrackerActivity, MusicActivity::class.java))
+            }
+
+
+            statsButton.setOnClickListener{
+                startActivity(Intent(this@SleepTrackerActivity, StatisticActivity::class.java))
+            }
+
+            profileButton.setOnClickListener{
+                startActivity(Intent(this@SleepTrackerActivity, ProfileActivity::class.java))
             }
         }
     }

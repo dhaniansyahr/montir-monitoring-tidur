@@ -37,7 +37,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             signInButton.setOnClickListener {
-                validation()
+//                validation()
+                startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
 //                startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
             }
         }

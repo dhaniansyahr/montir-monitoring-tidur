@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,47 +7,679 @@
     android:layout_height="match_parent"
     tools:context=".view.statistic.StatisticActivity"
     android:background="@color/bg_app">
-
-    <TextView
-        android:id="@+id/statisticTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center_horizontal"
-        android:text="@string/statistics_bottom_app"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="-13dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            app:tabSelectedTextColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-            />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager"
+    
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabs">
-        </androidx.viewpager2.widget.ViewPager2>
-    </LinearLayout>
+            android:fillViewport="true">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/statisticTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/statistics_bottom_app"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:ignore="MissingConstraints" />
 
-</RelativeLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintTop_toBottomOf="@+id/statisticTitle"
+                                    android:padding="10dp">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/sleepscoreBtn"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            app:cardCornerRadius="10dp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent">
+
+                                                <androidx.constraintlayout.widget.ConstraintLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:background="@color/gray">
+
+                                                        <TextView
+                                                            android:id="@+id/tvSleepScore"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="4dp"
+                                                            android:text="@string/score"
+                                                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                            android:textColor="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toEndOf="@+id/sleepscoreIcon"
+                                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                        <ImageView
+                                                            android:id="@+id/sleepscoreIcon"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="16dp"
+                                                            android:tint="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toStartOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/star"
+                                                            tools:ignore="UseAppTint" />
+
+                                                        <ImageView
+                                                            android:id="@+id/nextToSleepScore"
+                                                            android:layout_width="16dp"
+                                                            android:layout_height="16dp"
+                                                            android:layout_marginEnd="16dp"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintEnd_toEndOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+                                                </androidx.constraintlayout.widget.ConstraintLayout>
+                                        </androidx.cardview.widget.CardView>
+
+                                        <LinearLayout
+                                            android:id="@+id/cardLinear"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center_horizontal"
+                                            app:layout_constraintTop_toBottomOf="@id/sleepscoreBtn">
+
+                                                <!--        Alarm-->
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView2"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="10dp"
+                                                    app:cardCornerRadius="10dp"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent">
+
+                                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="100dp"
+                                                            android:background="@color/gray">
+
+                                                                <TextView
+                                                                    android:id="@+id/tvNumbInBed"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/bedCount"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="bold"
+                                                                    android:layout_marginTop="20dp"
+                                                                    android:textSize="20dp"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                                                <TextView
+                                                                    android:id="@+id/tvInBed"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/inbed"
+                                                                    android:layout_marginTop="0dp"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textSize="18dp"
+                                                                    android:textStyle="normal"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed"
+                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed" />
+
+                                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                </androidx.cardview.widget.CardView>
+
+                                                <!--        Snooze-->
+                                                <androidx.cardview.widget.CardView
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="100dp"
+                                                    android:layout_marginStart="10dp"
+                                                    app:cardCornerRadius="10dp"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent">
+
+                                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="100dp"
+                                                            android:background="@color/gray">
+
+                                                                <TextView
+                                                                    android:id="@+id/tvNumbAsleep"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/sleepCount"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="bold"
+                                                                    android:layout_marginTop="20dp"
+                                                                    android:textSize="20dp"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                                                <TextView
+                                                                    android:id="@+id/tvAsleep"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/asleep"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="normal"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep"
+                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep" />
+
+                                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                </androidx.cardview.widget.CardView>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:id="@+id/cardLinear2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center_horizontal"
+                                            app:layout_constraintTop_toBottomOf="@id/cardLinear">
+
+                                                <!--        Alarm-->
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="10dp"
+                                                    app:cardCornerRadius="10dp"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent">
+
+                                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="100dp"
+                                                            android:background="@color/gray">
+
+                                                                <TextView
+                                                                    android:id="@+id/tvNumbInBed2"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/bedCount"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="bold"
+                                                                    android:layout_marginTop="20dp"
+                                                                    android:textSize="20dp"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                                                <TextView
+                                                                    android:id="@+id/tvInBed2"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/inbed"
+                                                                    android:layout_marginTop="0dp"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textSize="18dp"
+                                                                    android:textStyle="normal"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed2"
+                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed2"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed2" />
+
+                                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                </androidx.cardview.widget.CardView>
+
+                                                <!--        Snooze-->
+                                                <androidx.cardview.widget.CardView
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="100dp"
+                                                    android:layout_marginStart="10dp"
+                                                    app:cardCornerRadius="10dp"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent">
+
+                                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="100dp"
+                                                            android:background="@color/gray">
+
+                                                                <TextView
+                                                                    android:id="@+id/tvNumbAsleep2"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/sleepCount"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="bold"
+                                                                    android:layout_marginTop="20dp"
+                                                                    android:textSize="20dp"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                                                <TextView
+                                                                    android:id="@+id/tvAsleep2"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/asleep"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    android:textStyle="normal"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep2"
+                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep2"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep2" />
+
+                                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                </androidx.cardview.widget.CardView>
+                                        </LinearLayout>
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <TextView
+                                    android:id="@+id/sleepdurTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/sleepDur"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+                                    tools:ignore="MissingConstraints" />
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/sleepTanggal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintTop_toBottomOf="@+id/sleepdurTitle"
+                                    android:padding="10dp">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/tglawalCard"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            app:cardCornerRadius="10dp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent">
+
+                                                <androidx.constraintlayout.widget.ConstraintLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:background="@color/gray">
+
+                                                        <ImageView
+                                                            android:id="@+id/tglawalIcon"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="16dp"
+                                                            android:tint="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toStartOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/star"
+                                                            tools:ignore="UseAppTint" />
+
+                                                        <TextView
+                                                            android:id="@+id/tglawalTitle"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="4dp"
+                                                            android:text="@string/score"
+                                                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                            android:textColor="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toEndOf="@+id/tglawalIcon"
+                                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                        <TextView
+                                                            android:id="@+id/tglInput"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginEnd="10dp"
+                                                            android:text="@string/score"
+                                                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                            android:textColor="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintEnd_toStartOf="@+id/tglawalBtn"
+                                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                        <ImageView
+                                                            android:id="@+id/tglawalBtn"
+                                                            android:layout_width="16dp"
+                                                            android:layout_height="16dp"
+                                                            android:layout_marginEnd="16dp"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintEnd_toEndOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+                                                </androidx.constraintlayout.widget.ConstraintLayout>
+                                        </androidx.cardview.widget.CardView>
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/tglakhirCard"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            app:cardCornerRadius="10dp"
+                                            android:layout_marginTop="10dp"
+                                            app:layout_constraintTop_toBottomOf="@id/tglawalCard">
+
+                                                <androidx.constraintlayout.widget.ConstraintLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="50dp"
+                                                    android:background="@color/gray">
+
+                                                        <ImageView
+                                                            android:id="@+id/tglakhirIcon"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="16dp"
+                                                            android:tint="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toStartOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/star"
+                                                            tools:ignore="UseAppTint" />
+
+                                                        <TextView
+                                                            android:id="@+id/tglakhirTitle"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="4dp"
+                                                            android:text="@string/score"
+                                                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                            android:textColor="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintStart_toEndOf="@+id/tglakhirIcon"
+                                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                        <TextView
+                                                            android:id="@+id/tglakhirInput"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginEnd="10dp"
+                                                            android:text="@string/score"
+                                                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                                            android:textColor="@color/white"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintEnd_toStartOf="@+id/tglakhirBtn"
+                                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                        <ImageView
+                                                            android:id="@+id/tglakhirBtn"
+                                                            android:layout_width="16dp"
+                                                            android:layout_height="16dp"
+                                                            android:layout_marginEnd="16dp"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintEnd_toEndOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent"
+                                                            app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+                                                </androidx.constraintlayout.widget.ConstraintLayout>
+                                        </androidx.cardview.widget.CardView>
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <!--                ini buat grafik-->
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/constraintLayout10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp"
+                                    app:layout_constraintTop_toBottomOf="@+id/sleepTanggal"
+                                    tools:layout_editor_absoluteX="2dp">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/grafik"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="16dp"
+                                            app:cardCornerRadius="10dp"
+                                            app:layout_constraintBottom_toBottomOf="parent">
+
+                                                <!--                    <ImageView-->
+                                                <!--                        android:id="@+id/grafIcon"-->
+                                                <!--                        android:layout_width="match_parent"-->
+                                                <!--                        android:layout_height="wrap_content"-->
+                                                <!--                        android:padding="10dp"-->
+                                                <!--                        android:background="@color/gray"-->
+                                                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                                                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                                                <!--                        app:layout_constraintTop_toTopOf="parent"-->
+                                                <!--                        app:srcCompat="@drawable/grafiksleep" />-->
+
+                                        </androidx.cardview.widget.CardView>
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                                <!--                ini end grafik-->
+
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="16dp"
+                                    android:layout_marginRight="16dp"
+                                    android:layout_marginBottom="16dp"
+                                    app:layout_constraintTop_toBottomOf="@id/constraintLayout10">
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="8dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textSize="14sp"
+                                                    android:layout_marginEnd="16dp"
+                                                    android:text="@string/display" />
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:textSize="14sp"
+                                                    android:layout_weight="1"
+                                                    android:text="@string/content_specs_display" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="8dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="16dp"
+                                                    android:textSize="14sp"
+                                                    android:text="@string/size" />
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:textSize="14sp"
+                                                    android:text="@string/content_specs_size" />
+                                        </TableRow>
+
+                                        <TableRow
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="8dp">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="16dp"
+                                                    android:textSize="14sp"
+                                                    android:text="@string/battery" />
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:textSize="14sp"
+                                                    android:text="@string/content_specs_battery" />
+                                        </TableRow>
+                                </TableLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/bottomAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/dark_gray">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/sleepButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/sleepIv"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="8dp"
+                                            app:srcCompat="@drawable/clear_night_bottom" />
+
+                                        <TextView
+                                            android:id="@+id/textView7"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="@string/sleep_bottom_app"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                                            android:textColor="@color/secondary" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/statsButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/statsIv"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="8dp"
+                                            app:srcCompat="@drawable/baseline_bar_chart_24" />
+
+                                        <TextView
+                                            android:id="@+id/tvStats"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="@string/statistics_bottom_app"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                                            android:textColor="@color/secondary" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/musicButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/musicIv"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="8dp"
+                                            app:srcCompat="@drawable/music_note" />
+
+                                        <TextView
+                                            android:id="@+id/tvMusic"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="@string/music_bottom_app"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                                            android:textColor="@color/secondary" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/profileButton"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/profileIv"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="8dp"
+                                            app:srcCompat="@drawable/outline_account_circle_24" />
+
+                                        <TextView
+                                            android:id="@+id/tvProfile"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="@string/profile_bottom_app"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                                            android:textColor="@color/secondary" />
+                                </LinearLayout>
+
+                        </LinearLayout>
+
+                </com.google.android.material.bottomappbar.BottomAppBar>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
