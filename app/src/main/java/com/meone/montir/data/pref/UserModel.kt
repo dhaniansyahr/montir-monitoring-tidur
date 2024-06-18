@@ -4,5 +4,11 @@ data class UserModel(
     val userId: String,
     val name: String,
     val token: String,
-    val isLogin: Boolean = false
+    val gender: Int,
+    val city: String,
+    val weight: Int,
+    val height: Int,
+    val age: Int,
+    val bmi: Any,
+    val isLogin: Boolean = false,
 )

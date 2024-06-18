@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivityMainBinding
 import com.meone.montir.view.sleep.SleepTrackerActivity
-import com.meone.montir.view.sleep.SleepTrackerViewModel
+import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 import com.meone.montir.viewModel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {

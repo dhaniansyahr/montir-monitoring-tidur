@@ -40,6 +40,7 @@
                     app:layout_constraintStart_toEndOf="@+id/detailIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
+<!--                Edited By Rama Source Icon Not Found-->
                 <ImageView
                     android:id="@+id/detailIcon"
                     android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/detail" />
+                    app:srcCompat="@drawable/brand_logo" />
 
                 <ImageView
                     android:id="@+id/nextToDetail"
@@ -88,6 +89,7 @@
                     app:layout_constraintStart_toEndOf="@+id/sleepscoreIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!--Edited By Rama Source Icon Not Found 18 Juni 2024-->
                 <ImageView
                     android:id="@+id/sleepscoreIcon"
                     android:layout_width="wrap_content"
@@ -97,7 +99,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/star"
+                    app:srcCompat="@drawable/brand_logo"
                     tools:ignore="UseAppTint" />
 
                 <ImageView

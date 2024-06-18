@@ -53,7 +53,6 @@
     <string name="bmi">BMI Category</string>
     <string name="stress">Level Stress</string>
     <string name="accountset">Account Setting</string>
-    <string name="username">Username / Email</string>
     <string name="oldpass">Old Password</string>
     <string name="newpass">New Password</string>
     <string name="confirmpass">Confirm Password</string>
@@ -69,4 +68,8 @@
     <string name="aveTime">8 Hours 5 Minutes</string>
     <string name="detailStatistic">Detail Statistics</string>
     <string name="username">Username</string>
+    <string name="stress_level">Stress Level</string>
+    <string name="desc_stress_dialog">Seberapa Stress Kamu Hari ini? Guna Meningkatkan Perhitungan Sleep Scrore Kamu</string>
+    <string name="perbaiki_dan_upgrade_kualitas_tidurmu_dengan_montir">Perbaiki dan Upgrade Kualitas Tidurmu dengan MONTIR</string>
+    <string name="save">Save</string>
 </resources>
