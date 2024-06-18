@@ -52,12 +52,12 @@ class SleepTrackerActivity : AppCompatActivity() {
 
         dialog = LoadingDialog(this)
 
-        viewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
-        }
+//        viewModel.getSession().observe(this) { user ->
+//            if (!user.isLogin) {
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }
+//        }
 
         binding.apply {
             alarmBtn.setOnClickListener {
