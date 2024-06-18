@@ -56,7 +56,7 @@ class SleepTrackerActivity : AppCompatActivity() {
                 finish()
             }
         }
-
+        
         binding.apply {
             alarmBtn.setOnClickListener {
                 val timePickerDialog = TimePickerDialog(
@@ -111,7 +111,6 @@ class SleepTrackerActivity : AppCompatActivity() {
 //                Toast.makeText(this@SleepTrackerActivity, "Alarm Berhasil Dibuat", Toast.LENGTH_SHORT).show()
 //                startActivity(Intent(this@SleepTrackerActivity, StopTrackerActivity::class.java))
             }
-
 
             musicButton.setOnClickListener {
                 startActivity(Intent(this@SleepTrackerActivity, MusicActivity::class.java))

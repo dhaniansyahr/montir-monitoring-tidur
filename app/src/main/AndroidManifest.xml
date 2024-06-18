@@ -19,6 +19,30 @@
         android:theme="@style/Theme.Montir"
         tools:targetApi="31">
         <activity
+            android:name=".view.account.AccountActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.profile.DetailProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.profile.ProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.SleepScoreActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.DetailStatisticActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.StatisticActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".view.music.DetailMusicActivity"
             android:exported="false" />
         <activity

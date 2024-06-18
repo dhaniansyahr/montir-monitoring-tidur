@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private lateinit var dialog: LoadingDialog
-
+  
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)

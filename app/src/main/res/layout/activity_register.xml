@@ -379,6 +379,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
+                <com.meone.montir.view.component.EmailField
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                                                            
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

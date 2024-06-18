@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<SleepTrackerViewModel> {
         ViewModelFactory.getInstance(this)
     }
-
+    
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         window.setFlags(
