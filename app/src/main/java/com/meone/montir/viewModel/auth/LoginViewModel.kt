@@ -33,6 +33,12 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            repository.logout()
+        }
+    }
+
     fun login(email: String, password: String) {
         _isLoading.value = true
         val post = Login(email, password)

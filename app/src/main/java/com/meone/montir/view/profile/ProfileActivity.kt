@@ -1,9 +1,10 @@
 package com.meone.montir.view.profile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.meone.montir.R
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivityProfileBinding
 import com.meone.montir.databinding.ActivityStatisticBinding
 import com.meone.montir.ui.main.ProfileFragment
@@ -12,10 +13,17 @@ import com.meone.montir.view.account.AccountActivity
 import com.meone.montir.view.music.MusicActivity
 import com.meone.montir.view.sleep.SleepTrackerActivity
 import com.meone.montir.view.statistic.StatisticActivity
+import com.meone.montir.view.auth.LoginActivity
+import com.meone.montir.viewModel.ViewModelFactory
+import com.meone.montir.viewModel.auth.LoginViewModel
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
+
+    private val authViewModel by viewModels<LoginViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -23,6 +31,16 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
+            logout.setOnClickListener {
+                authViewModel.logout()
+                finish()
+
+                Toast.makeText(this@ProfileActivity, "Anda berhasil logout", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
             profilSetting.setOnClickListener{
                 startActivity(Intent(this@ProfileActivity, DetailProfileActivity::class.java))
             }
@@ -32,7 +50,6 @@ class ProfileActivity : AppCompatActivity() {
             musicButton.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, MusicActivity::class.java))
             }
-
 
             statsButton.setOnClickListener{
                 startActivity(Intent(this@ProfileActivity, StatisticActivity::class.java))

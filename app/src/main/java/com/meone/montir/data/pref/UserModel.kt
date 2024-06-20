@@ -9,6 +9,5 @@ data class UserModel(
     val weight: Int,
     val height: Int,
     val age: Int,
-    val bmi: Any,
     val isLogin: Boolean = false,
 )
