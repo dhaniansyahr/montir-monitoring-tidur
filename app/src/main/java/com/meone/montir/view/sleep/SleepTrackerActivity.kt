@@ -8,10 +8,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.ArrayAdapter
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.meone.montir.R
 import com.meone.montir.databinding.ActivitySleepTrackerBinding
 import com.meone.montir.helper.alarmNotification.NotificationAlarmScheduler
 import com.meone.montir.helper.alarmNotification.ReminderItem
@@ -32,6 +34,7 @@ class SleepTrackerActivity : AppCompatActivity() {
 
     private lateinit var calendar: Calendar
     private lateinit var stressDialog: StressDialog
+    private lateinit var adapterItems: ArrayAdapter<String>
 
     private val viewModel by viewModels<SleepTrackerViewModel> {
         ViewModelFactory.getInstance(this)
@@ -43,6 +46,7 @@ class SleepTrackerActivity : AppCompatActivity() {
 
     private var alarmTime: String = ""
     private var sleepTime: String = ""
+    private var durationInput: Long = 0
 
     @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +56,10 @@ class SleepTrackerActivity : AppCompatActivity() {
 
         createNotificationChannel()
 
-        stressDialog = StressDialog(this)
+        var stressItem = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+        adapterItems = ArrayAdapter(this, R.layout.list_gender, stressItem)
+
+        stressDialog = StressDialog(this, adapterItems, durationInput)
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
@@ -106,9 +113,16 @@ class SleepTrackerActivity : AppCompatActivity() {
             }
 
             sleepTrackerBtn.setOnClickListener {
+                // Check if alarmTime or sleepTime is empty
+                if (alarmTime.isEmpty() || sleepTime.isEmpty()) {
+                    Toast.makeText(this@SleepTrackerActivity, "Please set both Alarm Time and Bedtime", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 stressDialog.show()
 
                 val duration = calculateDuration(sleepTime, alarmTime)
+                durationInput = duration
                 startCountDownTimer(duration)
 
                 val reminderItem = ReminderItem(
@@ -184,8 +198,6 @@ class SleepTrackerActivity : AppCompatActivity() {
         }
         countDownTimer.start()
     }
-
-
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

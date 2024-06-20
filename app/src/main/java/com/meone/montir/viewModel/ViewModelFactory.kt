@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.meone.montir.data.repository.AlarmRepository
 import com.meone.montir.data.repository.UserRepository
 import com.meone.montir.di.Injection
-import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 import com.meone.montir.viewModel.auth.LoginViewModel
 import com.meone.montir.viewModel.auth.RegisterViewModel
+import com.meone.montir.viewModel.music.MusicViewModel
+import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 
 class ViewModelFactory(private val repository: UserRepository, private val alarmRepository: AlarmRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -23,6 +24,9 @@ class ViewModelFactory(private val repository: UserRepository, private val alarm
             }
             modelClass.isAssignableFrom(SleepTrackerViewModel::class.java) -> {
                 SleepTrackerViewModel(repository, alarmRepository) as T
+            }
+            modelClass.isAssignableFrom(MusicViewModel::class.java) -> {
+                MusicViewModel() as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
