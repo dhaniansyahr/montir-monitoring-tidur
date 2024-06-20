@@ -52,7 +52,7 @@
             android:background="@drawable/background_progress_bar"
             android:indeterminate="false"
             android:max="100"
-            android:progress="80"
+            android:progress="100"
             android:progressDrawable="@drawable/filled_progress_bar"
             android:rotation="-90" />
 

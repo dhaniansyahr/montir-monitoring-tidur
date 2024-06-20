@@ -40,23 +40,22 @@ class DetailProfileActivity : AppCompatActivity() {
         viewModel.value.observe(this) {
             if (it != null) {
                 binding.apply {
-                    nameEditText.setText(it.data.username)
-                    ageEditText.setText(it.data.age.toString()) // Make sure to convert age to a string
-                    val gender: String = if (it.data.gender == 1) "Laki - Laki" else "Perempuan"
-                    genderEditText.setText(gender)
-                    BMIEditText.setText(it.data.bmi.toString())
+                    nameEditText.setText(it.data.city)
+                    ageEditText.setText(it.data.age.toString())
+                    genderEditText.setText(it.data.height.toString())
+                    BMIEditText.setText(it.data.weight.toString())
                 }
             }
         }
 
         binding.apply {
             editBtn.setOnClickListener {
-                val username = nameEditText.text.toString()
+                val city = nameEditText.text.toString()
                 val age = ageEditText.text.toString().toInt()
-                val gender = if (genderEditText.text.toString() == "Laki - Laki") true else false
-                val bmi = BMIEditText.text.toString().toFloat()
+                val height = genderEditText.text.toString()
+                val weight = BMIEditText.text.toString().toFloat()
 
-                viewModel.updateUser(RequestUpdateUser(username, age, gender, bmi))
+                viewModel.updateUser(RequestUpdateUser(city, age, height.toInt(), weight.toInt()))
             }
         }
 

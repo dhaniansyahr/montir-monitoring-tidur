@@ -21,8 +21,13 @@ data class RequestDailyData(
 )
 
 data class RequestUpdateUser(
-    val username: String,
+    val city: String,
     val age: Int,
-    val gender: Boolean,
-    val bmi: Float
+    val height: Int,
+    val weight: Int
+)
+
+data class RequestUpdatePassword(
+    val username: String,
+    val password: String
 )

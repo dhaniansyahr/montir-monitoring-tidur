@@ -8,8 +8,10 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.meone.montir.data.repository.UserRepository
 import com.meone.montir.response.ResponseGetUser
+import com.meone.montir.response.ResponseUpdatePassword
 import com.meone.montir.response.ResponseUpdateUser
 import com.meone.montir.service.ApiConfig
+import com.meone.montir.service.RequestUpdatePassword
 import com.meone.montir.service.RequestUpdateUser
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -29,6 +31,12 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
 
     private val _isLoadingUpdate = MutableLiveData<Boolean>()
     val isLoadingUpdate: LiveData<Boolean> = _isLoadingUpdate
+
+    private val _responseUpdatePassword = MutableLiveData<ResponseUpdatePassword>()
+    val responseUpdatePassword: LiveData<ResponseUpdatePassword> = _responseUpdatePassword
+
+    private val _isLoadingUpdatePassword = MutableLiveData<Boolean>()
+    val isLoadingUpdatePassword: LiveData<Boolean> = _isLoadingUpdatePassword
 
     private val _name = MutableLiveData<String>()
     val name: LiveData<String> = _name
@@ -101,6 +109,37 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
 
                         override fun onFailure(call: Call<ResponseUpdateUser>, t: Throwable) {
                             _isLoadingUpdate.value = false
+                            Log.e("Create Story", "onFailure ${t.message.toString()}")
+                        }
+                    })
+                }
+
+            }
+        }
+    }
+
+    fun updateAccount(reqBody: RequestUpdatePassword){
+        _isLoadingUpdatePassword.value = true
+        viewModelScope.launch {
+            repository.getSession().asLiveData().observeForever {
+                if (it != null) {
+                    val client = ApiConfig.getApiService().updatePassword("Bearer ${it.token}", it.userId, reqBody)
+
+                    client.enqueue(object : Callback<ResponseUpdatePassword> {
+                        override fun onResponse(
+                            call: Call<ResponseUpdatePassword>,
+                            response: Response<ResponseUpdatePassword>
+                        ) {
+                            _isLoadingUpdatePassword.value = false
+                            if (response.isSuccessful) {
+                                _responseUpdatePassword.value = response.body()
+                            } else {
+                                Log.e("Create Story", "onFailure ${response.message()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResponseUpdatePassword>, t: Throwable) {
+                            _isLoadingUpdatePassword.value = false
                             Log.e("Create Story", "onFailure ${t.message.toString()}")
                         }
                     })

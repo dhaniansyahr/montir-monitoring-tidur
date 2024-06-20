@@ -196,3 +196,36 @@ data class DataUpdateUser(
 	@field:SerializedName("bmi")
 	val bmi: Float
 )
+
+data class ResponseUpdatePassword(
+
+	@field:SerializedName("data")
+	val data: List<DataUpdatePassword>,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataUpdatePassword(
+
+	@field:SerializedName("gender")
+	val gender: Int,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("weight")
+	val weight: Int,
+
+	@field:SerializedName("age")
+	val age: Int,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("height")
+	val height: Int,
+
+	@field:SerializedName("bmi")
+	val bmi: Any
+)
