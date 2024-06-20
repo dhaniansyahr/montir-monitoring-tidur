@@ -16,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/ivMusic"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -27,29 +27,30 @@
                 app:srcCompat="@drawable/brand_logo" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/tvTitleMusic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/perfect"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintStart_toEndOf="@+id/ivMusic"
                 app:layout_constraintTop_toTopOf="@+id/ivMusic" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tvDurationMusic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/artist_music"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/ivMusic"
-                app:layout_constraintStart_toEndOf="@+id/ivMusic" />
+                app:layout_constraintStart_toEndOf="@+id/ivMusic"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleMusic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
