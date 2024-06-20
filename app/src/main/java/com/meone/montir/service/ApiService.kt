@@ -6,6 +6,7 @@ import com.meone.montir.response.RegisterResponse
 import com.meone.montir.response.ResponseDailyData
 import com.meone.montir.response.ResponseGetUser
 import com.meone.montir.response.ResponseMusic
+import com.meone.montir.response.ResponseUpdatePassword
 import com.meone.montir.response.ResponseUpdateUser
 import retrofit2.Call
 import retrofit2.http.Body
@@ -54,4 +55,11 @@ interface ApiService {
         @Path("id") id: String,
         @Body requestBody: RequestUpdateUser
     ): Call<ResponseUpdateUser>
+
+    @PUT("/users/pass/{id}")
+    fun updatePassword(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body requestBody: RequestUpdatePassword
+    ): Call<ResponseUpdatePassword>
 }
