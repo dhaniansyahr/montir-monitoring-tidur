@@ -36,9 +36,6 @@ data class DataItem(
 
 	@field:SerializedName("height")
 	val height: Int,
-
-	@field:SerializedName("bmi")
-	val bmi: Any
 )
 
 data class RegisterResponse(

@@ -25,7 +25,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[CITY_KEY] = user.city
             preferences[WEIGHT_KEY] = user.weight
             preferences[HEIGHT_KEY] = user.height
-            preferences[BMI_KEY] = user.bmi as Int
             preferences[IS_LOGIN_KEY] = true
         }
     }
@@ -41,7 +40,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[WEIGHT_KEY] ?: 0,
                 preferences[HEIGHT_KEY] ?: 0,
                 preferences[AGE_KEY] ?: 0,
-                preferences[BMI_KEY] ?: 0,
                 preferences[IS_LOGIN_KEY] ?: false,
             )
         }
