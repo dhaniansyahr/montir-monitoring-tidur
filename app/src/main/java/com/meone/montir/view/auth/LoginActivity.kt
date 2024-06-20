@@ -2,6 +2,7 @@ package com.meone.montir.view.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.value.observe(this) {
             viewModel.saveSession(UserModel(it.userId, it.data[0].username, it.token, it.data[0].gender, it.data[0].city, it.data[0].weight, it.data[0].height, it.data[0].age))
+            Log.e("TOKEN NIH", "${it.token}")
             startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
 //            AlertDialog.Builder(this).apply {
 //                setTitle("Yeah!")

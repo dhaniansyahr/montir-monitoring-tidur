@@ -77,39 +77,13 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
             if (data.isEmpty()) {
                 val dataSet = LineDataSet(data, "Sleep Duration")
                 dataSet.color = Color.BLUE // Example color customization
-
                 val barData = LineData(dataSet)
-//        barData.barWidth = 0.9f
                 chart.data = barData
-//        chart.setFitBars(true)
                 chart.invalidate() // Refresh the chart
             } else {
                 updateBarChart(data)
             }
         })
-
-//        chart.setNoDataText("No Data")
-
-//        viewModel.updateChartData("2024-06-01", "2024-06-07")
-        //setup chart data
-//        val data = dataValue1()
-//        val barDataSet1 = BarDataSet(data, "Data Set 1")
-//        val dataSets = ArrayList<IBarDataSet>()
-//        dataSets.add(barDataSet1)
-//
-//        val xAxis: XAxis = chart.xAxis
-//        xAxis.valueFormatter = MyAxisValueFormatter()
-
-
-//        chart.setNoDataText("Not Enough Record Yet for this week")
-//        val description = Description()
-//        description.text = "Sleep Durations"
-//        chart.description = description
-//
-//
-//        val barData = BarData(dataSets)
-//        chart.data = barData
-//        chart.invalidate()
 
         binding.apply {
             sleepscoreBtn.setOnClickListener {

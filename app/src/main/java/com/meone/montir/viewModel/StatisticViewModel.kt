@@ -5,12 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.github.mikephil.charting.data.BarEntry
 import com.meone.montir.data.repository.SleepDataRepository
 import com.meone.montir.data.repository.UserRepository
 import com.meone.montir.response.GetSleepDur
+import com.meone.montir.response.GetSleepDurResponse
 import com.meone.montir.response.LoginResponse
 import com.meone.montir.service.ApiConfig
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,46 +36,63 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
     // Initialize with empty data
     init {
 //        _barChartData.value = emptyList()
-        updateChartData("2024-05-01", "2024-05-07")
+        DefaultChartData("2024-05-01", "2024-05-07")
     }
 
     // Function to update chart data based on selected date range
     fun updateChartData(startDate: String, endDate: String) {
         _isLoading.value = true
 
-//        repository.getSession().asLiveData().observeForever{
-//            if (it != null){
-//                val client = ApiConfig.getApiService().getSleepDuration(startDate, endDate)
-//
-//                client.enqueue(object : Callback<List<GetSleepDur>> {
-//                    override fun onResponse(
-//                        call: Call<List<GetSleepDur>>,
-//                        response: Response<List<GetSleepDur>>
-//                    ) {
-//                        _isLoading.value = false
-//                        if (response.isSuccessful){
-//                            _value.value = response.body()
-//                        }else{
-//                            Log.e("get sleepdur", "onFailure ${response.message()}")
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<List<GetSleepDur>>, t: Throwable) {
-//                        TODO("Not yet implemented")
-//                        _isLoading.value = false
-//                        Log.e("get sleepdur", "onFailure ${t.message.toString()}")
-//                    }
-//                })
-//            }
-//        }
+        viewModelScope.launch {
+            repository.getToken().asLiveData().observeForever {
+                if (it != null) {
+                    val client = ApiConfig.getApiService()
+                        .getSleepDuration("Bearer ${it}", startDate, endDate)
 
-//        repository.fetchSleepData(startDate, endDate) { data ->
-//            val barEntries = data.map { GetSleepDur ->
-//                val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(GetSleepDur.date.toString())?.time?.toFloat() ?: 0f
-//                BarEntry(date, GetSleepDur.sleep_duration.toFloat())
-//            }
-//            _barChartData.postValue(barEntries)
-//        }
+                    client.enqueue(object : Callback<GetSleepDurResponse> {
+                        override fun onResponse(
+                            call: Call<GetSleepDurResponse>,
+                            response: Response<GetSleepDurResponse>
+                        ) {
+                            _isLoading.value = false
+                            if (response.isSuccessful) {
+                                _value.value = response.body()?.data
+                                Log.e("get sleepdur", "onSucces ${response.body()}")
+                            } else {
+                                DefaultChartData("2024-05-01", "2024-05-07")
+                                Log.e(
+                                    "get sleepdur",
+                                    "onFailure Response ${it} ${response.code()} - ${response.message()} - ${
+                                        response.errorBody()?.string()
+                                    }"
+                                )
+                            }
+                        }
+
+                        override fun onFailure(call: Call<GetSleepDurResponse>, t: Throwable) {
+                            _isLoading.value = false
+                            Log.e("get sleepdur unreachable", "onFailure ${t.message}")
+                        }
+                    })
+                }
+            }
+
+            _value.observeForever { getSleepDurList ->
+                if (getSleepDurList != null) {
+                    val barEntries = getSleepDurList.map { sleepDur ->
+                        val date = SimpleDateFormat(
+                            "yyyy-MM-dd",
+                            Locale.getDefault()
+                        ).parse(sleepDur.date.toString())?.time?.toFloat() ?: 0f
+                        BarEntry(date, sleepDur.sleep_duration.toFloat())
+                    }
+                    _barChartData.postValue(barEntries)
+                }
+            }
+        }
+    }
+
+    fun DefaultChartData(startDate: String, endDate: String){
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val calendar = Calendar.getInstance().apply {
             time = dateFormat.parse(startDate) ?: Date()
@@ -82,7 +102,6 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
         }
 
         val data = mutableListOf<BarEntry>()
-        var index = calendar.time
 
         while (!calendar.after(endCalendar)) {
             // Example: Get dummy sleep duration (replace with actual data retrieval logic)
@@ -90,7 +109,6 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
             val barEntry = BarEntry(calendar.timeInMillis.toFloat(), sleepDuration.toFloat())
             data.add(barEntry)
             calendar.add(Calendar.DAY_OF_MONTH, 1)
-//            index++
         }
 
         _barChartData.value = data
@@ -98,6 +116,6 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
 
     // Example function to generate random sleep duration for demonstration
     private fun getRandomSleepDuration(): Float {
-        return (4..9).random().toFloat() // Random sleep duration between 4 to 9 hours
+        return (0.toFloat()) // Random sleep duration between 4 to 9 hours
     }
 }
