@@ -44,13 +44,13 @@
             android:textColor="@color/white"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/genderInputLayout"
+            app:layout_constraintBottom_toTopOf="@+id/stressInputLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/genderInputLayout"
+            android:id="@+id/stressInputLayout"
             style="@style/SelectInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <AutoCompleteTextView
-                android:id="@+id/genderSelect"
+                android:id="@+id/stressSelect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

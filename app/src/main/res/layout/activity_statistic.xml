@@ -80,7 +80,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/star"
+                                                            app:srcCompat="@drawable/brand_logo"
                                                             tools:ignore="UseAppTint" />
 
                                                         <ImageView
@@ -349,7 +349,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/star"
+                                                            app:srcCompat="@drawable/brand_logo"
                                                             tools:ignore="UseAppTint" />
 
                                                         <TextView
@@ -411,7 +411,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/star"
+                                                            app:srcCompat="@drawable/brand_logo"
                                                             tools:ignore="UseAppTint" />
 
                                                         <TextView

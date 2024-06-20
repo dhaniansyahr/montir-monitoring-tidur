@@ -58,3 +58,24 @@ data class Data(
 	@field:SerializedName("userId")
 	val userId: String? = null
 )
+
+data class ResponseMusic(
+
+	@field:SerializedName("data")
+	val data: List<DataItemMusic>,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataItemMusic(
+
+	@field:SerializedName("duration")
+	val duration: String,
+
+	@field:SerializedName("urlMusic")
+	val urlMusic: String,
+
+	@field:SerializedName("musicName")
+	val musicName: String
+)
