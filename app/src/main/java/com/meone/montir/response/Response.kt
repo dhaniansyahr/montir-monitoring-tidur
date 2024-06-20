@@ -112,3 +112,120 @@ data class DataDaily(
 	@field:SerializedName("bmi")
 	val bmi: Any
 )
+
+data class ResponseGetUser(
+
+	@field:SerializedName("data")
+	val data: DataUser,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataUser(
+
+	@field:SerializedName("gender")
+	val gender: Int,
+
+	@field:SerializedName("bmi_obese")
+	val bmiObese: Int,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("weight")
+	val weight: Int,
+
+	@field:SerializedName("bmi_overweight")
+	val bmiOverweight: Int,
+
+	@field:SerializedName("password")
+	val password: String,
+
+	@field:SerializedName("bmi_underweight")
+	val bmiUnderweight: Int,
+
+	@field:SerializedName("bmi_normal")
+	val bmiNormal: Int,
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("age")
+	val age: Int,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("height")
+	val height: Int,
+
+	@field:SerializedName("bmi")
+	val bmi: Float
+)
+
+data class ResponseUpdateUser(
+
+	@field:SerializedName("data")
+	val data: List<DataUpdateUser>,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataUpdateUser(
+
+	@field:SerializedName("gender")
+	val gender: Int,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("weight")
+	val weight: Int,
+
+	@field:SerializedName("age")
+	val age: Int,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("height")
+	val height: Int,
+
+	@field:SerializedName("bmi")
+	val bmi: Float
+)
+
+data class ResponseUpdatePassword(
+
+	@field:SerializedName("data")
+	val data: List<DataUpdatePassword>,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataUpdatePassword(
+
+	@field:SerializedName("gender")
+	val gender: Int,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("weight")
+	val weight: Int,
+
+	@field:SerializedName("age")
+	val age: Int,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("height")
+	val height: Int,
+
+	@field:SerializedName("bmi")
+	val bmi: Any
+)

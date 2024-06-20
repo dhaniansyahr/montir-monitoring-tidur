@@ -92,113 +92,39 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:text="@string/oldpass"
-
+            android:text="@string/update_password"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextView" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ageEditTextLayout"
+            android:id="@+id/passwordEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-
             android:textColor="@color/white"
-            app:endIconMode="clear_text"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ageTextView"
             app:shapeAppearanceOverlay="@style/RoundedCornerTextInputLayout"
            >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ageEditText"
+            <com.meone.montir.view.component.PasswordField
+                android:id="@+id/passEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:inputType="textPassword"
                 android:background="@drawable/input_background"
-                android:inputType="textEmailAddress"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/genderTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/newpass"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageEditTextLayout"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/genderEditTextLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/white"
-            app:endIconMode="clear_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genderTextView"
-            app:shapeAppearanceOverlay="@style/RoundedCornerTextInputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/genderEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_background"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/BMITextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/confirmpass"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genderEditTextLayout"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/BMIEditTextLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/white"
-            app:endIconMode="clear_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BMITextView"
-            app:shapeAppearanceOverlay="@style/RoundedCornerTextInputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/BMIEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_background"
-                android:ems="10"
-                android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/editPassBtn"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginStart="32dp"
@@ -211,7 +137,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BMIEditTextLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -102,4 +102,9 @@
     <string name="numbDateStart">Select Date</string>
     <string name="numbDateEnd">Select Date</string>
     <string name="empty">Empty</string>
+    <string name="city">City</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="password">Password</string>
+    <string name="update_password">Update Password</string>
 </resources>

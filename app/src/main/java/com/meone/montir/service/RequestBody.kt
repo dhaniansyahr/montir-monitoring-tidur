@@ -19,3 +19,15 @@ data class RequestDailyData(
     val stress_level: Int,
     val sleep_duration: Float
 )
+
+data class RequestUpdateUser(
+    val city: String,
+    val age: Int,
+    val height: Int,
+    val weight: Int
+)
+
+data class RequestUpdatePassword(
+    val username: String,
+    val password: String
+)

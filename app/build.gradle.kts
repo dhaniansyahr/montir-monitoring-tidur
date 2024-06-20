@@ -68,6 +68,9 @@ dependencies {
 
     implementation ("com.airbnb.android:lottie:6.4.1")
 
+    // Circular Image View
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
