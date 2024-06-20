@@ -6,6 +6,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivityProfileBinding
+import com.meone.montir.databinding.ActivityStatisticBinding
+import com.meone.montir.ui.main.ProfileFragment
+import com.meone.montir.view.statistic.SleepScoreActivity
+import com.meone.montir.view.account.AccountActivity
+import com.meone.montir.view.music.MusicActivity
+import com.meone.montir.view.sleep.SleepTrackerActivity
+import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.view.auth.LoginActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import com.meone.montir.viewModel.auth.LoginViewModel
@@ -34,7 +41,8 @@ class ProfileActivity : AppCompatActivity() {
                 authViewModel.logout()
                 finish()
 
-                Toast.makeText(this@ProfileActivity, "Anda berhasil logout", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProfileActivity, "Anda berhasil logout", Toast.LENGTH_SHORT)
+                    .show()
 
                 val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
                 startActivity(intent)

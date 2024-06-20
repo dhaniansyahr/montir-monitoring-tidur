@@ -60,6 +60,7 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="sleepDur">Sleep Durations</string>
+    <string name="limitSleepDur">(max 7 days)</string>
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
@@ -85,22 +86,7 @@
         FHD AMOLED at 441ppi\n
         2.5D Corning® Gorilla® Glass 4</string>
     <string name="content_specs_size">5.6 x 2.7 x 0.2 ~ 0.3 inches 143.8 x 69.5 x 7.3 ~ 8.5 mm</string>
-    <string name="content_specs_battery">2,770 mAh battery\n
-        Standby time (LTE): up to 19 days\n
-        Talk time (3g/WCDMA): up to 26 hours\n
-        Internet use time (Wi-Fi): up to 13 hours\n
-        Internet use time (LTE): up to 13 hours\n
-        Video playback: up to 13 hours\n
-        Audio playback (via headset): up to 110 hours\n
-        Fast charging: up to 7 hours of use from only 15 minutes of charging
-        Standby time (LTE): up to 19 days\n
-        Talk time (3g/WCDMA): up to 26 hours\n
-        Internet use time (Wi-Fi): up to 13 hours\n
-        Internet use time (LTE): up to 13 hours\n
-        Video playback: up to 13 hours\n
-        Audio playback (via headset): up to 110 hours\n
-        Fast charging: up to 7 hours of use from only 15 minutes of charging
-    </string>
+
     <string name="title">Google Pixel</string>
     <string name="specification">Spesifikasi</string>
     <string name="display">Display</string>
@@ -111,4 +97,9 @@
     <string name="buy">Beli</string>
     <string name="dummy_value">$735</string>
     <string name="dummy_photos">6 photos</string>
+    <string name="tanggalStart">Start Date</string>
+    <string name="tanggalEnd">End Date</string>
+    <string name="numbDateStart">Select Date</string>
+    <string name="numbDateEnd">Select Date</string>
+    <string name="empty">Empty</string>
 </resources>

@@ -61,12 +61,12 @@ class SleepTrackerActivity : AppCompatActivity() {
 
 //        stressDialog = StressDialog(this, adapterItems, durationInput)
 
-        viewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
-        }
+//        viewModel.getSession().observe(this) { user ->
+//            if (!user.isLogin) {
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }
+//        }
 
         viewModel.getAlarmTime().observe(this) {
             binding.valueAlarm.text = it

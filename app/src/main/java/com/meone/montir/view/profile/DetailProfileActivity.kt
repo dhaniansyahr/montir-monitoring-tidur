@@ -20,6 +20,7 @@ class DetailProfileActivity : AppCompatActivity() {
     }
 
     private lateinit var dialog: LoadingDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailProfileBinding.inflate(layoutInflater)
