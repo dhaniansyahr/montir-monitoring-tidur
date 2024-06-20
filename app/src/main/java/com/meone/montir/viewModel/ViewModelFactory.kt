@@ -15,6 +15,9 @@ class ViewModelFactory(private val repository: UserRepository, private val alarm
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
+            modelClass.isAssignableFrom(StatisticViewModel::class.java) -> {
+                StatisticViewModel() as T
+            }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel() as T
             }

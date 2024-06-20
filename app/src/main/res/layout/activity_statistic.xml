@@ -122,33 +122,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbInBed"
+                                                                    android:id="@+id/titleAverageSleepScore"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/bedCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvInBed"
+                                                                    android:id="@+id/subTitleAverageSleepScore"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/inbed"
-                                                                    android:layout_marginTop="0dp"
+                                                                    android:text="@string/score"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textSize="18dp"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepScore"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepScore"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepScore"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -169,31 +183,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbAsleep"
+                                                                    android:id="@+id/titleAverageSleepDuration"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/sleepCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.153"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvAsleep"
+                                                                    android:id="@+id/subTitleAverageSleepDuration"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/asleep"
+                                                                    android:text="Sleep Duration"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.162"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepDuration"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepDuration"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepDuration"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -225,33 +255,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbInBed2"
+                                                                    android:id="@+id/titleAverageSleepTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/bedCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvInBed2"
+                                                                    android:id="@+id/subTitleAverageSleepTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/inbed"
-                                                                    android:layout_marginTop="0dp"
+                                                                    android:text="Sleep Time"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textSize="18dp"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed2"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed2"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed2" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepTime"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepTime"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepTime"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -272,31 +316,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbAsleep2"
+                                                                    android:id="@+id/titleAverageWakeUpTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/sleepCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvAsleep2"
+                                                                    android:id="@+id/subTitleAverageWakeUpTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/asleep"
+                                                                    android:text="Sleep Time"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep2"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep2"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep2" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageWakeUpTime"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageWakeUpTime"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageWakeUpTime"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>

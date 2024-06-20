@@ -101,4 +101,5 @@
     <string name="tanggalEnd">End Date</string>
     <string name="numbDateStart">Select Date</string>
     <string name="numbDateEnd">Select Date</string>
+    <string name="empty">Empty</string>
 </resources>

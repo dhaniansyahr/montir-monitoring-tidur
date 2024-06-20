@@ -44,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.value.observe(this) {
-            viewModel.saveSession(UserModel(it.userId, "Testing", it.token, it.data[0].gender, it.data[0].city, it.data[0].weight, it.data[0].height, it.data[0].age, it.data[0].bmi))
+            viewModel.saveSession(UserModel(it.userId, "Testing", it.token, it.data[0].gender, it.data[0].city, it.data[0].weight, it.data[0].height, it.data[0].age,
+                it.data[0].bmi
+            ))
             AlertDialog.Builder(this).apply {
                 setTitle("Yeah!")
                 setMessage("Anda berhasil login!")

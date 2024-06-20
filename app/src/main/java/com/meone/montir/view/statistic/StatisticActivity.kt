@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.activity.viewModels
 import com.github.mikephil.charting.data.Entry
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -30,6 +31,9 @@ import com.meone.montir.databinding.ActivityStatisticBinding
 import com.meone.montir.view.music.MusicActivity
 import com.meone.montir.view.profile.ProfileActivity
 import com.meone.montir.view.sleep.SleepTrackerActivity
+import com.meone.montir.viewModel.StatisticViewModel
+import com.meone.montir.viewModel.ViewModelFactory
+import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 import java.util.Calendar
 
 
@@ -47,6 +51,9 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
     private lateinit var mDisplayDateEnd: TextView
     private lateinit var mDateEndSetListener: DatePickerDialog.OnDateSetListener
 
+    private val viewModel by viewModels<StatisticViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +63,6 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
         //initialize chart
         chart = findViewById(R.id.chart1)
-        //set the value selected
-        chart.setOnChartValueSelectedListener(this)
 
         //setup chart data
         val data = dataValue1()
@@ -139,15 +144,15 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
             mDateStartSetListener = DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
                 val adjustedMonth = month + 1 // Adjust month since Calendar.MONTH is zero-based
-                Log.d(TAG, "onDataSet: dd/mm/yyyy: $day-$adjustedMonth-$year")
-                val date = "$day/$adjustedMonth/$year"
+                Log.d(TAG, "onDataSet: yyyy/mm/dd: $year-$adjustedMonth-$day")
+                val date = "$year-$adjustedMonth-$day"
                 mDisplayDateStart.text = date // Assuming mDisplayDateStart is a TextView
             }
 
             mDateEndSetListener = DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
                 val adjustedMonth = month + 1 // Adjust month since Calendar.MONTH is zero-based
-                Log.d(TAG, "onDataSet: dd/mm/yyyy: $day-$adjustedMonth-$year")
-                val date = "$day/$adjustedMonth/$year"
+                Log.d(TAG, "onDataSet: yyyy/mm/dd: $year-$adjustedMonth-$day")
+                val date = "$year-$adjustedMonth-$day"
                 mDisplayDateEnd.text = date // Assuming mDisplayDateStart is a TextView
             }
 
