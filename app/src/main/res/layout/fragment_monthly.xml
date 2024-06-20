@@ -48,7 +48,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/detail" />
+                    app:srcCompat="@drawable/brand_logo" />
 
                 <ImageView
                     android:id="@+id/nextToDetail"
@@ -97,7 +97,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/star"
+                    app:srcCompat="@drawable/brand_logo"
                     tools:ignore="UseAppTint" />
 
                 <ImageView

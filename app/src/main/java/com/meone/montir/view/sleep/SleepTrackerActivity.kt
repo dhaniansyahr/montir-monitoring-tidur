@@ -1,35 +1,37 @@
 package com.meone.montir.view.sleep
 
 import android.annotation.SuppressLint
-import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
+import android.os.CountDownTimer
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.meone.montir.databinding.ActivitySleepTrackerBinding
 import com.meone.montir.helper.alarmNotification.NotificationAlarmScheduler
+import com.meone.montir.helper.alarmNotification.ReminderItem
 import com.meone.montir.view.auth.LoginActivity
-import com.meone.montir.view.profile.ProfileActivity
-import com.meone.montir.view.component.LoadingDialog
+import com.meone.montir.view.component.StressDialog
 import com.meone.montir.view.music.MusicActivity
+import com.meone.montir.view.profile.ProfileActivity
 import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.viewModel.ViewModelFactory
+import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class SleepTrackerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySleepTrackerBinding
 
     private lateinit var calendar: Calendar
-    private lateinit var alarmManager: AlarmManager
-    private lateinit var pendingIntent: PendingIntent
+    private lateinit var stressDialog: StressDialog
 
     private val viewModel by viewModels<SleepTrackerViewModel> {
         ViewModelFactory.getInstance(this)
@@ -39,34 +41,43 @@ class SleepTrackerActivity : AppCompatActivity() {
         NotificationAlarmScheduler(this)
     }
 
-    private lateinit var dialog: LoadingDialog
+    private var alarmTime: String = ""
+    private var sleepTime: String = ""
 
     @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySleepTrackerBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         createNotificationChannel()
 
-        dialog = LoadingDialog(this)
+        stressDialog = StressDialog(this)
 
-//        viewModel.getSession().observe(this) { user ->
-//            if (!user.isLogin) {
-//                startActivity(Intent(this, LoginActivity::class.java))
-//                finish()
-//            }
-//        }
+        viewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+
+        viewModel.getAlarmTime().observe(this) {
+            binding.valueAlarm.text = it
+        }
+
+        viewModel.getSleepTime().observe(this) {
+            binding.valueBedTime.text = it
+        }
 
         binding.apply {
             alarmBtn.setOnClickListener {
                 val timePickerDialog = TimePickerDialog(
-                    this@SleepTrackerActivity, // Replace 'YourActivity' with the actual name of your activity
+                    this@SleepTrackerActivity,
                     android.R.style.Theme_Holo_Dialog_MinWidth,
                     TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
                         val time = String.format("%02d:%02d", hourOfDay, minute)
                         valueAlarm.text = time
+                        alarmTime = time
 
                         calendar = Calendar.getInstance()
                         calendar[Calendar.HOUR_OF_DAY] = hourOfDay
@@ -82,11 +93,12 @@ class SleepTrackerActivity : AppCompatActivity() {
 
             bedtimeBtn.setOnClickListener {
                 val timePickerDialog = TimePickerDialog(
-                    this@SleepTrackerActivity, // Replace 'YourActivity' with the actual name of your activity
+                    this@SleepTrackerActivity,
                     android.R.style.Theme_Holo_Dialog_MinWidth,
                     TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
                         val time = String.format("%02d:%02d", hourOfDay, minute)
                         valueBedTime.text = time
+                        sleepTime = time
                     }, 12, 0, false
                 )
                 timePickerDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -94,24 +106,21 @@ class SleepTrackerActivity : AppCompatActivity() {
             }
 
             sleepTrackerBtn.setOnClickListener {
-                dialog.show()
+                stressDialog.show()
 
-                val handler = Handler()
-                val runnable = Runnable {
-                    dialog.cancel()
-                }
-                handler.postDelayed(runnable, 3000)
-//                val reminderItem = ReminderItem(
-//                    time = Calendar.getInstance().apply {
-//                        set(Calendar.HOUR_OF_DAY, 19)
-//                        set(Calendar.MINUTE, 0)
-//                    }.timeInMillis,
-//                    id = 1,
-//                )
-//                notificationAlarmScheduler.schedule(reminderItem)
-//
-//                Toast.makeText(this@SleepTrackerActivity, "Alarm Berhasil Dibuat", Toast.LENGTH_SHORT).show()
-//                startActivity(Intent(this@SleepTrackerActivity, StopTrackerActivity::class.java))
+                val duration = calculateDuration(sleepTime, alarmTime)
+                startCountDownTimer(duration)
+
+                val reminderItem = ReminderItem(
+                    time = Calendar.getInstance().apply {
+                        set(Calendar.HOUR_OF_DAY, 19)
+                        set(Calendar.MINUTE, 0)
+                    }.timeInMillis,
+                    id = 1,
+                )
+                notificationAlarmScheduler.schedule(reminderItem)
+
+                Toast.makeText(this@SleepTrackerActivity, "Alarm Berhasil Disetting", Toast.LENGTH_SHORT).show()
             }
 
             musicButton.setOnClickListener {
@@ -126,13 +135,57 @@ class SleepTrackerActivity : AppCompatActivity() {
             profileButton.setOnClickListener{
                 startActivity(Intent(this@SleepTrackerActivity, ProfileActivity::class.java))
             }
+        }
+    }
 
-            sleepButton.setOnClickListener{
-                startActivity(Intent(this@SleepTrackerActivity, SleepTrackerActivity::class.java))
+    private fun timeStringToMillis(time: String): Long {
+        val format = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val date = format.parse(time)
+        val calendar = Calendar.getInstance().apply {
+            this.time = date!!
+        }
+        return calendar.get(Calendar.HOUR_OF_DAY) * 3600000L + calendar.get(Calendar.MINUTE) * 60000L
+    }
+
+    private fun calculateDuration(sleepTime: String, alarmTime: String): Long {
+        val sleepMillis = timeStringToMillis(sleepTime)
+        val alarmMillis = timeStringToMillis(alarmTime)
+
+        return if (alarmMillis > sleepMillis) {
+            alarmMillis - sleepMillis
+        } else {
+            // If alarm time is on the next day
+            alarmMillis + 24 * 3600000L - sleepMillis
+        }
+    }
+
+    private fun startCountDownTimer(duration: Long) {
+        val max = 86400 // Max progress should be in seconds
+        binding.progressBar.max = max.toInt()
+
+        val countDownTimer = object : CountDownTimer(duration, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val elapsedSeconds = (millisUntilFinished / 1000).toInt()
+                val hours = elapsedSeconds / 3600
+                val minutes = (elapsedSeconds % 3600) / 60
+                val seconds = elapsedSeconds % 60
+
+                runOnUiThread {
+                    binding.progressBar.progress = elapsedSeconds
+                    binding.valueSleepTime.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+                }
+            }
+
+            override fun onFinish() {
+                runOnUiThread {
+                    binding.valueSleepTime.text = "00:00:00"
+                }
             }
         }
-
+        countDownTimer.start()
     }
+
+
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -145,5 +198,4 @@ class SleepTrackerActivity : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-
 }

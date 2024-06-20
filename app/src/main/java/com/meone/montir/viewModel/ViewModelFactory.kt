@@ -3,13 +3,14 @@ package com.meone.montir.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.meone.montir.data.repository.AlarmRepository
 import com.meone.montir.data.repository.UserRepository
 import com.meone.montir.di.Injection
-import com.meone.montir.view.sleep.SleepTrackerViewModel
+import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
 import com.meone.montir.viewModel.auth.LoginViewModel
 import com.meone.montir.viewModel.auth.RegisterViewModel
 
-class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val repository: UserRepository, private val alarmRepository: AlarmRepository) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -21,7 +22,7 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
                 LoginViewModel(repository) as T
             }
             modelClass.isAssignableFrom(SleepTrackerViewModel::class.java) -> {
-                SleepTrackerViewModel(repository) as T
+                SleepTrackerViewModel(repository, alarmRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
@@ -34,7 +35,7 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
+                    INSTANCE = ViewModelFactory(Injection.provideRepository(context), Injection.provideAlarmRepository(context))
                 }
             }
             return INSTANCE as ViewModelFactory

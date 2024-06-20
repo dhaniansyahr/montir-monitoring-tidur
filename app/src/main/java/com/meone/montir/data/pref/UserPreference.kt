@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,13 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         dataStore.edit { preferences ->
             preferences[USER_ID_KEY] = user.userId
             preferences[NAME_KEY] = user.name
-//            preferences[TOKEN_KEY] = user.token
+            preferences[TOKEN_KEY] = user.token
+            preferences[GENDER_KEY] = user.gender
+            preferences[AGE_KEY] = user.age
+            preferences[CITY_KEY] = user.city
+            preferences[WEIGHT_KEY] = user.weight
+            preferences[HEIGHT_KEY] = user.height
+            preferences[BMI_KEY] = user.bmi as Int
             preferences[IS_LOGIN_KEY] = true
         }
     }
@@ -28,7 +35,14 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             UserModel(
                 preferences[USER_ID_KEY] ?: "",
                 preferences[NAME_KEY] ?: "",
-                preferences[IS_LOGIN_KEY] ?: false
+                preferences[TOKEN_KEY] ?: "",
+                preferences[GENDER_KEY] ?: 0,
+                preferences[CITY_KEY] ?: "",
+                preferences[WEIGHT_KEY] ?: 0,
+                preferences[HEIGHT_KEY] ?: 0,
+                preferences[AGE_KEY] ?: 0,
+                preferences[BMI_KEY] ?: 0,
+                preferences[IS_LOGIN_KEY] ?: false,
             )
         }
     }
@@ -53,6 +67,12 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val NAME_KEY = stringPreferencesKey("name")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
+        private val GENDER_KEY = intPreferencesKey("gender")
+        private val AGE_KEY = intPreferencesKey("age")
+        private val CITY_KEY = stringPreferencesKey("city")
+        private val WEIGHT_KEY = intPreferencesKey("weight")
+        private val HEIGHT_KEY = intPreferencesKey("height")
+        private val BMI_KEY = intPreferencesKey("bmi")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {

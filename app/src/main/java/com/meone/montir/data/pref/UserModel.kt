@@ -3,5 +3,12 @@ package com.meone.montir.data.pref
 data class UserModel(
     val userId: String,
     val name: String,
-    val isLogin: Boolean = false
+    val token: String,
+    val gender: Int,
+    val city: String,
+    val weight: Int,
+    val height: Int,
+    val age: Int,
+    val bmi: Any,
+    val isLogin: Boolean = false,
 )
