@@ -12,6 +12,7 @@ import com.meone.montir.viewModel.auth.RegisterViewModel
 import com.meone.montir.viewModel.music.DetailMusicViewModel
 import com.meone.montir.viewModel.music.MusicViewModel
 import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
+import com.meone.montir.viewModel.sleep.StopTrackerViewModel
 
 class ViewModelFactory(private val repository: UserRepository, private val alarmRepository: AlarmRepository, private val musicRepository: MusicRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -35,6 +36,9 @@ class ViewModelFactory(private val repository: UserRepository, private val alarm
             }
             modelClass.isAssignableFrom(DetailMusicViewModel::class.java) -> {
                 DetailMusicViewModel(musicRepository) as T
+            }
+            modelClass.isAssignableFrom(StopTrackerViewModel::class.java) -> {
+                StopTrackerViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

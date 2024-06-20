@@ -76,3 +76,39 @@ data class DataItemMusic(
 	@field:SerializedName("musicName")
 	val musicName: String
 )
+
+data class ResponseDailyData(
+
+	@field:SerializedName("data")
+	val data: DataDaily,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DataDaily(
+
+	@field:SerializedName("gender")
+	val gender: Int,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("quality_score")
+	val qualityScore: Any,
+
+	@field:SerializedName("sleep_duration")
+	val sleepDuration: Int,
+
+	@field:SerializedName("userId")
+	val userId: String,
+
+	@field:SerializedName("stress_level")
+	val stressLevel: Int,
+
+	@field:SerializedName("age")
+	val age: Int,
+
+	@field:SerializedName("bmi")
+	val bmi: Any
+)
