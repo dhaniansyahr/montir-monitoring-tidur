@@ -9,11 +9,15 @@ import android.os.Handler
 import android.os.IBinder
 import android.util.Log
 import android.widget.SeekBar
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.meone.montir.R
+import com.meone.montir.data.pref.MusicModel
 import com.meone.montir.databinding.ActivityDetailMusicBinding
 import com.meone.montir.helper.music.MusicService
+import com.meone.montir.viewModel.ViewModelFactory
+import com.meone.montir.viewModel.music.DetailMusicViewModel
 
 class DetailMusicActivity : AppCompatActivity() {
 
@@ -26,34 +30,26 @@ class DetailMusicActivity : AppCompatActivity() {
     private val handler = Handler()
     private var countDownRunnable: Runnable? = null
 
+    private val viewModel by viewModels<DetailMusicViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
     private val TAG = "DetailMusicActivity"
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            Log.d(TAG, "onServiceConnected")
             val binder = service as MusicService.MusicBinder
             musicService = binder.getService()
             isBound = true
-            updateUI() // Update UI when service is connected
-            binding.apply {
-                if (musicService!!.isPlaying()) {
-                    playPauseBtn.setImageResource(R.drawable.pause)
-                    countDownRunnable?.let { handler.post(it) }
-                    handler.post(updateSeekBarRunnable)
-                } else {
-                    playPauseBtn.setImageResource(R.drawable.play_arrow)
-                    countDownRunnable?.let { handler.removeCallbacks(it) }
-                    handler.removeCallbacks(updateSeekBarRunnable)
-                }
-            }
+            updateUI() // Call updateUI after the service is connected
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
-            Log.d(TAG, "onServiceDisconnected")
-            musicService = null
             isBound = false
+            musicService = null
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,16 +80,17 @@ class DetailMusicActivity : AppCompatActivity() {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                     if (fromUser) {
                         musicService?.seekTo(progress)
-                        updateCountdownTimer(durationInMillis - progress.toLong())
                     }
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                    countDownRunnable?.let { handler.removeCallbacks(it) }
+                    // Pause updating the SeekBar position while the user is touching it
+                    handler.removeCallbacks(updateSeekBarRunnable)
                 }
 
                 override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    countDownRunnable?.let { handler.post(it) }
+                    // Resume updating the SeekBar position after the user has stopped touching it
+                    handler.post(updateSeekBarRunnable)
                 }
             })
 
@@ -103,14 +100,17 @@ class DetailMusicActivity : AppCompatActivity() {
                     Log.d(TAG, "onCreate: isBound = $isBound")
                     if (isPlaying) {
                         musicService?.pauseMusic()
+                        viewModel.saveMusic(MusicModel(musicName, musicDurationString, false))
                     } else {
                         musicService?.resumeMusic()
+                        viewModel.saveMusic(MusicModel(musicName, musicDurationString, true))
                     }
                     isPlaying = !isPlaying
                     updateUI()
                 } else {
                     Log.d(TAG, "onCreate Start Music Service: isBound = $isBound")
                     startMusicService()
+                    viewModel.saveMusic(MusicModel(musicName, musicDurationString, true))
                 }
             }
         }
@@ -119,7 +119,8 @@ class DetailMusicActivity : AppCompatActivity() {
     private val updateSeekBarRunnable = object : Runnable {
         override fun run() {
             if (isPlaying && musicService?.isPlaying() == true) {
-                binding.sbDurationMusic.progress = musicService?.getCurrentPosition() ?: 0
+                binding.sbDurationMusic.progress = musicService!!.getCurrentPosition()
+                binding.tvMusicDuration.text = formatMillisToTime(musicService!!.getCurrentPosition().toLong())
                 handler.postDelayed(this, 1000L) // Update every second
             }
         }
@@ -143,24 +144,27 @@ class DetailMusicActivity : AppCompatActivity() {
     }
 
 //    KEsalahan Pada Saat Music Service tetap Null HArus Cari Cara Buat Dapetin Music Service Tidak Null
-    private fun startMusicService() {
-        val serviceIntent = Intent(this, MusicService::class.java).apply {
-            putExtra("MUSIC_URL", musicUrl)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Log.d(TAG, "Music Service : $musicService")
-            ContextCompat.startForegroundService(this, serviceIntent)
-        } else {
-            Log.d(TAG, "startMusicService: Build.VERSION.SDK_INT < Build.VERSION_CODES.O")
-            startService(serviceIntent)
-        }
+private fun startMusicService() {
+    val serviceIntent = Intent(this, MusicService::class.java).apply {
+        putExtra("MUSIC_URL", musicUrl)
     }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        Log.d(TAG, "Music Service : $musicService")
+        ContextCompat.startForegroundService(this, serviceIntent)
+    } else {
+        Log.d(TAG, "startMusicService: Build.VERSION.SDK_INT < Build.VERSION_CODES.O")
+        startService(serviceIntent)
+    }
+    bindService(serviceIntent, serviceConnection, BIND_AUTO_CREATE)
+}
+
 
     private fun updateUI() {
-        Log.d(TAG, "updateUI: isBound = $isBound")
         if (isBound && musicService != null) {
+            val isPlayingMusic = musicService?.isPlaying()
+            Log.d(TAG, "updateUI: isPlaying = $isPlayingMusic")
             binding.apply {
-                if (musicService!!.isPlaying()) {
+                if (isPlayingMusic == true) {
                     playPauseBtn.setImageResource(R.drawable.pause)
                     countDownRunnable?.let { handler.post(it) }
                     handler.post(updateSeekBarRunnable)
@@ -174,6 +178,7 @@ class DetailMusicActivity : AppCompatActivity() {
             Log.e(TAG, "updateUI: MusicService or binding not initialized")
         }
     }
+
 
     private fun updateCountdownTimer(remainingMillis: Long) {
         countDownRunnable = object : Runnable {
