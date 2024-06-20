@@ -59,7 +59,7 @@ class SleepTrackerActivity : AppCompatActivity() {
         var stressItem = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
         adapterItems = ArrayAdapter(this, R.layout.list_gender, stressItem)
 
-        stressDialog = StressDialog(this, adapterItems, durationInput)
+//        stressDialog = StressDialog(this, adapterItems, durationInput)
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
@@ -119,10 +119,11 @@ class SleepTrackerActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                stressDialog.show()
-
                 val duration = calculateDuration(sleepTime, alarmTime)
                 durationInput = duration
+                stressDialog = StressDialog(this@SleepTrackerActivity, adapterItems, durationInput)
+                stressDialog.show()
+
                 startCountDownTimer(duration)
 
                 val reminderItem = ReminderItem(
