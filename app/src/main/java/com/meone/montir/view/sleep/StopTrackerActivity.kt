@@ -11,6 +11,8 @@ import com.meone.montir.view.statistic.StatisticActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import com.meone.montir.viewModel.music.DetailMusicViewModel
 import com.meone.montir.viewModel.sleep.StopTrackerViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class StopTrackerActivity : AppCompatActivity() {
@@ -26,6 +28,8 @@ class StopTrackerActivity : AppCompatActivity() {
     }
 
     private lateinit var dialog: LoadingDialog
+
+    private var currentTime: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,7 @@ class StopTrackerActivity : AppCompatActivity() {
             textView9.text = "$formattedDuration Hours"
 
             button4.setOnClickListener {
+                currentTime = getCurrentTime()
                 viewModel.createDailyData(stressInput, formattedDuration.toFloat())
             }
 
@@ -80,6 +85,7 @@ class StopTrackerActivity : AppCompatActivity() {
                     putExtra("QUALITY_SCORE", it.data.qualityScore.toString())
                     putExtra("SLEEP_DURATION", it.data.sleepDuration.toString())
                     putExtra("BMI", it.data.bmi.toString())
+                    putExtra("WAKE_UP_TIME", currentTime)
                 }
                 startActivity(intent)
             }
@@ -89,5 +95,10 @@ class StopTrackerActivity : AppCompatActivity() {
     private fun formatDurationInHours(durationInMillis: Long): String {
         val hours = durationInMillis / 3600000.0
         return String.format(Locale.US, "%.1f", hours)
+    }
+
+    private fun getCurrentTime(): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        return sdf.format(Date())
     }
 }
