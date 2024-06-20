@@ -80,7 +80,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/brand_logo"
+                                                            app:srcCompat="@drawable/star"
                                                             tools:ignore="UseAppTint" />
 
                                                         <ImageView
@@ -122,33 +122,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbInBed"
+                                                                    android:id="@+id/titleAverageSleepScore"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/bedCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvInBed"
+                                                                    android:id="@+id/subTitleAverageSleepScore"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/inbed"
-                                                                    android:layout_marginTop="0dp"
+                                                                    android:text="@string/score"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textSize="18dp"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepScore"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepScore"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepScore"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -169,31 +183,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbAsleep"
+                                                                    android:id="@+id/titleAverageSleepDuration"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/sleepCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.153"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvAsleep"
+                                                                    android:id="@+id/subTitleAverageSleepDuration"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/asleep"
+                                                                    android:text="Sleep Duration"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.162"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepDuration"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepDuration"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepDuration"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -225,33 +255,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbInBed2"
+                                                                    android:id="@+id/titleAverageSleepTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/bedCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Score"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvInBed2"
+                                                                    android:id="@+id/subTitleAverageSleepTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/inbed"
-                                                                    android:layout_marginTop="0dp"
+                                                                    android:text="BMI"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textSize="18dp"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbInBed2"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbInBed2"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbInBed2" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageSleepTime"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageSleepTime"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageSleepTime"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -272,31 +316,47 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/tvNumbAsleep2"
+                                                                    android:id="@+id/titleAverageWakeUpTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/sleepCount"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="Average"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                                                                    android:textColor="@color/white"
-                                                                    android:textStyle="bold"
-                                                                    android:layout_marginTop="20dp"
-                                                                    android:textSize="20dp"
+                                                                    android:textColor="@color/light_gray"
+                                                                    android:textSize="15dp"
                                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.158"
                                                                     app:layout_constraintStart_toStartOf="parent"
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/tvAsleep2"
+                                                                    android:id="@+id/subTitleAverageWakeUpTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="@string/asleep"
+                                                                    android:text="Sleep Time"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
-                                                                    android:textStyle="normal"
+                                                                    android:textSize="16dp"
                                                                     app:layout_constraintBottom_toBottomOf="parent"
-                                                                    app:layout_constraintEnd_toEndOf="@+id/tvNumbAsleep2"
-                                                                    app:layout_constraintStart_toStartOf="@+id/tvNumbAsleep2"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/tvNumbAsleep2" />
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageWakeUpTime"
+                                                                    app:layout_constraintVertical_bias="0.025" />
+
+                                                                <TextView
+                                                                    android:id="@+id/AverageWakeUpTime"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="@string/empty"
+                                                                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                                                                    android:textColor="@color/white"
+                                                                    app:layout_constraintBottom_toBottomOf="parent"
+                                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                                    app:layout_constraintHorizontal_bias="0.159"
+                                                                    app:layout_constraintStart_toStartOf="parent"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageWakeUpTime"
+                                                                    app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>
                                                 </androidx.cardview.widget.CardView>
@@ -309,13 +369,29 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentStart="true"
-                                    android:layout_marginStart="20dp"
                                     android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="20dp"
                                     android:text="@string/sleepDur"
                                     android:textColor="@color/white"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/sleepdurSideTitle"
+                                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+                                    tools:ignore="MissingConstraints" />
+
+                                <TextView
+                                    android:id="@+id/sleepdurSideTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="10dp"
+                                    android:text="@string/limitSleepDur"
+                                    android:textColor="@color/white"
+                                    android:paddingTop="2dp"
+                                    android:textSize="14sp"
+                                    app:layout_constraintStart_toEndOf="@id/sleepdurTitle"
                                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
                                     tools:ignore="MissingConstraints" />
 
@@ -336,6 +412,7 @@
                                             app:layout_constraintTop_toTopOf="parent">
 
                                                 <androidx.constraintlayout.widget.ConstraintLayout
+                                                    android:id="@+id/tglStart"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="50dp"
                                                     android:background="@color/gray">
@@ -349,7 +426,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/brand_logo"
+                                                            app:srcCompat="@drawable/calendar"
                                                             tools:ignore="UseAppTint" />
 
                                                         <TextView
@@ -357,7 +434,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginStart="4dp"
-                                                            android:text="@string/score"
+                                                            android:text="@string/tanggalStart"
                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                                             android:textColor="@color/white"
                                                             app:layout_constraintBottom_toBottomOf="parent"
@@ -369,7 +446,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginEnd="10dp"
-                                                            android:text="@string/score"
+                                                            android:text="@string/numbDateStart"
                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                                             android:textColor="@color/white"
                                                             app:layout_constraintBottom_toBottomOf="parent"
@@ -411,7 +488,7 @@
                                                             app:layout_constraintBottom_toBottomOf="parent"
                                                             app:layout_constraintStart_toStartOf="parent"
                                                             app:layout_constraintTop_toTopOf="parent"
-                                                            app:srcCompat="@drawable/brand_logo"
+                                                            app:srcCompat="@drawable/calendar"
                                                             tools:ignore="UseAppTint" />
 
                                                         <TextView
@@ -419,7 +496,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginStart="4dp"
-                                                            android:text="@string/score"
+                                                            android:text="@string/tanggalEnd"
                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                                             android:textColor="@color/white"
                                                             app:layout_constraintBottom_toBottomOf="parent"
@@ -431,7 +508,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginEnd="10dp"
-                                                            android:text="@string/score"
+                                                            android:text="@string/numbDateEnd"
                                                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                                             android:textColor="@color/white"
                                                             app:layout_constraintBottom_toBottomOf="parent"
@@ -455,7 +532,7 @@
 
                                 <!--                ini buat grafik-->
                                 <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:id="@+id/constraintLayout10"
+                                    android:id="@+id/grafikLayout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="10dp"
@@ -470,90 +547,23 @@
                                             app:cardCornerRadius="10dp"
                                             app:layout_constraintBottom_toBottomOf="parent">
 
-                                                <!--                    <ImageView-->
-                                                <!--                        android:id="@+id/grafIcon"-->
-                                                <!--                        android:layout_width="match_parent"-->
-                                                <!--                        android:layout_height="wrap_content"-->
-                                                <!--                        android:padding="10dp"-->
-                                                <!--                        android:background="@color/gray"-->
-                                                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                                                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                                                <!--                        app:layout_constraintTop_toTopOf="parent"-->
-                                                <!--                        app:srcCompat="@drawable/grafiksleep" />-->
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@color/white">
 
+                                                        <com.github.mikephil.charting.charts.LineChart
+                                                            android:id="@+id/chart1"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:minHeight="200dp"/>
+
+                                                </RelativeLayout>
                                         </androidx.cardview.widget.CardView>
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                                 <!--                ini end grafik-->
-
-                                <TableLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="16dp"
-                                    android:layout_marginRight="16dp"
-                                    android:layout_marginBottom="16dp"
-                                    app:layout_constraintTop_toBottomOf="@id/constraintLayout10">
-
-                                        <TableRow
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="8dp">
-
-                                                <TextView
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="14sp"
-                                                    android:layout_marginEnd="16dp"
-                                                    android:text="@string/display" />
-
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="14sp"
-                                                    android:layout_weight="1"
-                                                    android:text="@string/content_specs_display" />
-                                        </TableRow>
-
-                                        <TableRow
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="8dp">
-
-                                                <TextView
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginEnd="16dp"
-                                                    android:textSize="14sp"
-                                                    android:text="@string/size" />
-
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
-                                                    android:textSize="14sp"
-                                                    android:text="@string/content_specs_size" />
-                                        </TableRow>
-
-                                        <TableRow
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="8dp">
-
-                                                <TextView
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginEnd="16dp"
-                                                    android:textSize="14sp"
-                                                    android:text="@string/battery" />
-
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
-                                                    android:textSize="14sp"
-                                                    android:text="@string/content_specs_battery" />
-                                        </TableRow>
-                                </TableLayout>
+                                
                         </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
