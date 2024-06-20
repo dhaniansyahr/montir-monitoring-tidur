@@ -9,6 +9,7 @@ import com.meone.montir.databinding.ActivityProfileBinding
 import com.meone.montir.view.auth.LoginActivity
 import com.meone.montir.viewModel.ViewModelFactory
 import com.meone.montir.viewModel.auth.LoginViewModel
+import com.meone.montir.viewModel.profile.ProfileViewModel
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -17,6 +18,11 @@ class ProfileActivity : AppCompatActivity() {
     private val authViewModel by viewModels<LoginViewModel> {
         ViewModelFactory.getInstance(this)
     }
+
+    private val viewModel by viewModels<ProfileViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -32,6 +38,16 @@ class ProfileActivity : AppCompatActivity() {
 
                 val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
                 startActivity(intent)
+            }
+
+            profilSetting.setOnClickListener {
+                startActivity(Intent(this@ProfileActivity, DetailProfileActivity::class.java))
+            }
+        }
+
+        viewModel.name.observe(this) {
+            if (it != null) {
+                binding.textView2.text = it
             }
         }
     }
