@@ -2,10 +2,12 @@ package com.meone.montir.service
 
 import com.meone.montir.response.LoginResponse
 import com.meone.montir.response.RegisterResponse
+import com.meone.montir.response.ResponseDailyData
 import com.meone.montir.response.ResponseMusic
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -21,4 +23,10 @@ interface ApiService {
 
     @GET("audios")
     fun getAudios(): Call<ResponseMusic>
+
+    @POST("users/daily")
+    fun createDaily(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestDailyData
+    ): Call<ResponseDailyData>
 }

@@ -37,26 +37,12 @@ class LoginActivity : AppCompatActivity() {
 
             signInButton.setOnClickListener {
                 validation()
-//                startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
-//                startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
             }
         }
 
         viewModel.value.observe(this) {
             viewModel.saveSession(UserModel(it.userId, it.data[0].username, it.token, it.data[0].gender, it.data[0].city, it.data[0].weight, it.data[0].height, it.data[0].age))
             startActivity(Intent(this@LoginActivity, SleepTrackerActivity::class.java))
-//            AlertDialog.Builder(this).apply {
-//                setTitle("Yeah!")
-//                setMessage("Anda berhasil login!")
-//                setPositiveButton("Lanjut") { _, _ ->
-//                    val intent = Intent(context, SleepTrackerActivity::class.java)
-//                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                    startActivity(intent)
-//                    finish()
-//                }
-//                create()
-//                show()
-//            }
         }
 
         viewModel.isLoading.observe(this) {
