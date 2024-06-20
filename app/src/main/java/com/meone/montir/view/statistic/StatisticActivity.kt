@@ -13,7 +13,9 @@ import com.github.mikephil.charting.data.Entry
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.Observer
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
@@ -21,6 +23,8 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
@@ -34,16 +38,19 @@ import com.meone.montir.view.sleep.SleepTrackerActivity
 import com.meone.montir.viewModel.StatisticViewModel
 import com.meone.montir.viewModel.ViewModelFactory
 import com.meone.montir.viewModel.sleep.SleepTrackerViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 
 class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
     private lateinit var binding: ActivityStatisticBinding
-    private lateinit var chart: BarChart
+    private lateinit var chart: LineChart
+    private val BASE_URL = "https://montir-cvzxsttw2a-et.a.run.app/"
+    private val TAG:String = "STATISTICACTIVITY"
 
     //date
-    private val TAG = "StatisticActivity"
     private lateinit var mClickDateStart: CardView
     private lateinit var mDisplayDateStart: TextView
     private lateinit var mDateStartSetListener: DatePickerDialog.OnDateSetListener
@@ -64,25 +71,45 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
         //initialize chart
         chart = findViewById(R.id.chart1)
 
+        setupChart()
+
+        viewModel.barChartData.observe(this, Observer { data ->
+            if (data.isEmpty()) {
+                val dataSet = LineDataSet(data, "Sleep Duration")
+                dataSet.color = Color.BLUE // Example color customization
+
+                val barData = LineData(dataSet)
+//        barData.barWidth = 0.9f
+                chart.data = barData
+//        chart.setFitBars(true)
+                chart.invalidate() // Refresh the chart
+            } else {
+                updateBarChart(data)
+            }
+        })
+
+//        chart.setNoDataText("No Data")
+
+//        viewModel.updateChartData("2024-06-01", "2024-06-07")
         //setup chart data
-        val data = dataValue1()
-        val barDataSet1 = BarDataSet(data, "Data Set 1")
-        val dataSets = ArrayList<IBarDataSet>()
-        dataSets.add(barDataSet1)
-
-        val xAxis: XAxis = chart.xAxis
-        xAxis.valueFormatter = MyAxisValueFormatter()
-
-
-        chart.setNoDataText("Not Enough Record Yet for this week")
-        val description = Description()
-        description.text = "Sleep Durations"
-        chart.description = description
+//        val data = dataValue1()
+//        val barDataSet1 = BarDataSet(data, "Data Set 1")
+//        val dataSets = ArrayList<IBarDataSet>()
+//        dataSets.add(barDataSet1)
+//
+//        val xAxis: XAxis = chart.xAxis
+//        xAxis.valueFormatter = MyAxisValueFormatter()
 
 
-        val barData = BarData(dataSets)
-        chart.data = barData
-        chart.invalidate()
+//        chart.setNoDataText("Not Enough Record Yet for this week")
+//        val description = Description()
+//        description.text = "Sleep Durations"
+//        chart.description = description
+//
+//
+//        val barData = BarData(dataSets)
+//        chart.data = barData
+//        chart.invalidate()
 
         binding.apply {
             sleepscoreBtn.setOnClickListener {
@@ -140,6 +167,7 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
                 )
                 dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
+                Log.d(TAG, mDisplayDateEnd.text.toString())
             })
 
             mDateStartSetListener = DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
@@ -154,8 +182,44 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
                 Log.d(TAG, "onDataSet: yyyy/mm/dd: $year-$adjustedMonth-$day")
                 val date = "$year-$adjustedMonth-$day"
                 mDisplayDateEnd.text = date // Assuming mDisplayDateStart is a TextView
+                viewModel.updateChartData(mDisplayDateStart.text.toString(), mDisplayDateEnd.text.toString())
             }
 
+        }
+    }
+
+    private fun setupChart(){
+        chart.description.isEnabled = false
+        chart.setDrawGridBackground(false)
+        chart.setPinchZoom(true)
+        chart.setScaleEnabled(true)
+        chart.setDragEnabled(true)
+        chart.setVisibleXRangeMaximum(7f)  // Show 7 entries at a time
+
+        // Customize xAxis
+        val xAxis = chart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = DateAxisValueFormatter() // Custom formatter for date display
+        xAxis.granularity = 1f // One day interval
+    }
+
+    private fun updateBarChart(data: List<BarEntry>) {
+        val dataSet = LineDataSet(data, "Sleep Duration")
+        dataSet.color = Color.BLUE // Example color customization
+
+        val barData = LineData(dataSet)
+//        barData.barWidth = 0.9f
+        chart.data = barData
+//        chart.setFitBars(true)
+        chart.invalidate() // Refresh the chart
+    }
+
+    // Custom ValueFormatter for xAxis to display dates
+    private inner class DateAxisValueFormatter : ValueFormatter() {
+        private val dateFormat = SimpleDateFormat("MM/dd", Locale.getDefault())
+
+        override fun getFormattedValue(value: Float): String {
+            return dateFormat.format(value.toLong())
         }
     }
 

@@ -259,7 +259,7 @@
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginTop="10dp"
-                                                                    android:text="Average"
+                                                                    android:text="Score"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/light_gray"
                                                                     android:textSize="15dp"
@@ -272,7 +272,7 @@
                                                                     android:id="@+id/subTitleAverageSleepTime"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="Sleep Time"
+                                                                    android:text="BMI"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
                                                                     android:textSize="16dp"
@@ -552,7 +552,7 @@
                                                     android:layout_height="wrap_content"
                                                     android:background="@color/white">
 
-                                                        <com.github.mikephil.charting.charts.BarChart
+                                                        <com.github.mikephil.charting.charts.LineChart
                                                             android:id="@+id/chart1"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"

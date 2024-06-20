@@ -35,31 +35,32 @@ class ProfileActivity : AppCompatActivity() {
                 authViewModel.logout()
                 finish()
 
-                Toast.makeText(this@ProfileActivity, "Anda berhasil logout", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProfileActivity, "Anda berhasil logout", Toast.LENGTH_SHORT)
+                    .show()
 
                 val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
                 startActivity(intent)
             }
 
-            profilSetting.setOnClickListener{
+            profilSetting.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, DetailProfileActivity::class.java))
             }
-            accountSetting.setOnClickListener{
+            accountSetting.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, AccountActivity::class.java))
             }
             musicButton.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, MusicActivity::class.java))
             }
 
-            statsButton.setOnClickListener{
+            statsButton.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, StatisticActivity::class.java))
             }
 
-            profileButton.setOnClickListener{
+            profileButton.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, ProfileActivity::class.java))
             }
 
-            sleepButton.setOnClickListener{
+            sleepButton.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, SleepTrackerActivity::class.java))
             }
         }
