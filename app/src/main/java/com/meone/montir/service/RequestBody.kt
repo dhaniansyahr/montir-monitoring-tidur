@@ -14,3 +14,8 @@ data class Login(
     val username: String,
     val password: String
 )
+
+data class RequestDailyData(
+    val stress_level: Int,
+    val sleep_duration: Float
+)

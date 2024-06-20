@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.WindowManager
@@ -17,6 +18,7 @@ class StressDialog(@NonNull context: Context, adapter: ArrayAdapter<String>, dur
 
     private val binding: SleepDialogBinding = SleepDialogBinding.inflate(LayoutInflater.from(context))
     var stressInput: Int = 0
+
     init {
         window?.let {
             val params: WindowManager.LayoutParams = it.attributes
@@ -40,16 +42,14 @@ class StressDialog(@NonNull context: Context, adapter: ArrayAdapter<String>, dur
             }
         }
 
-
         binding.button2.setOnClickListener {
             val intent = Intent(context, StopTrackerActivity::class.java)
             intent.putExtra("duration", duration)
             intent.putExtra("stress", stressInput)
+            Log.d("StressDialog", "stressInput: $stressInput")
+            Log.d("StressDialog", "duration: $duration")
             context.startActivity(intent)
             dismiss()
         }
     }
-
 }
-
-
