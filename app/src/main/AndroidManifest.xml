@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +21,66 @@
         android:theme="@style/Theme.Montir"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.account.AccountActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.profile.DetailProfileActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.profile.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.SleepScoreActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.DetailStatisticActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.statistic.StatisticActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".view.music.DetailMusicActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.music.MusicActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.sleep.StopTrackerActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.sleep.SleepTrackerActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.getStarted.GetStarted"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".view.getStarted.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +88,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".helper.AlarmReceiver" />
+        <service
+            android:name=".helper.music.MusicService"
+            android:enabled="true"
+            android:exported="false"
+            />
     </application>
 
 </manifest>

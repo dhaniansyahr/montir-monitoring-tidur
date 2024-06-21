@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/bg_app"
+    android:layout_height="match_parent"
+    tools:context=".view.sleep.StopTrackerActivity">
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sleep_tracker"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/cardView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@color/gray">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView10"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:text="@string/sleep_sounds"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <Switch-->
+<!--                    android:id="@+id/switch1"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:checked="true"-->
+<!--                    android:thumb="@drawable/switch_thumb"-->
+<!--                    android:track="@drawable/switch_track"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:ignore="UseSwitchCompatOrMaterialXml" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/musicLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/gray">
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/playBtn"-->
+                <!--                    android:layout_width="30dp"-->
+                <!--                    android:layout_height="30dp"-->
+                <!--                    android:layout_marginEnd="16dp"-->
+                <!--                    android:contentDescription="@string/play_music_for_sleep_tracker"-->
+                <!--                    android:tint="@color/tertiary"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent"-->
+                <!--                    app:srcCompat="@drawable/play_arrow"-->
+                <!--                    tools:ignore="UseAppTint" />-->
+
+                <TextView
+                    android:id="@+id/tvMusicTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sleep_sounds"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvMusicTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/music_time_sleep_tracker"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvMusicTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvMusicTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMusicTitle"
+                    app:layout_constraintVertical_bias="0.326" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--        Alarm-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/cardView2"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/musicLayout">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:background="@color/gray">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/alarmBtn"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:contentDescription="@string/play_music_for_sleep_tracker"-->
+<!--                    android:tint="@color/white"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/baseline_access_alarm_24"-->
+<!--                    tools:ignore="UseAppTint" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvAlarm"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/turn_off"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textStyle="normal"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/alarmBtn"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/alarmBtn"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/alarmBtn" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+        <!--        Snooze-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/musicLayout">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:background="@color/gray">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/snoozeIv"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:contentDescription="@string/play_music_for_sleep_tracker"-->
+<!--                    android:tint="@color/white"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/baseline_access_alarm_24"-->
+<!--                    tools:ignore="UseAppTint" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvSnooze"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/snooze_alarm"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textStyle="normal"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/snoozeIv"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/snoozeIv"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/snoozeIv" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/sleep_time"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/tertiary"
+        android:text="@string/stop_tracker"
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
+</androidx.constraintlayout.widget.ConstraintLayout>
