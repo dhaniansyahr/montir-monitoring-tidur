@@ -30,6 +30,9 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
     private val _value = MutableLiveData<List<GetSleepDur>>()
     val value: LiveData<List<GetSleepDur>> = _value
 
+    private val _valueAverage = MutableLiveData<List<GetSleepDur>>()
+    val valueAverage: LiveData<List<GetSleepDur>> = _valueAverage
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -37,6 +40,48 @@ class StatisticViewModel(private val repository: UserRepository): ViewModel() {
     init {
 //        _barChartData.value = emptyList()
         DefaultChartData("2024-05-01", "2024-05-07")
+    }
+
+    //get Average sleep score, sleep duration, BMI, Sleep Time
+    fun getAverageData(){
+        _isLoading.value = true
+        viewModelScope.launch {
+            repository.getToken().asLiveData().observeForever{
+                if (it != null){
+                    val bearerToken = "Bearer $it"
+                    val client = ApiConfig.getApiService().getAverageData("Bearer $it")
+
+                    Log.d("get average", "Token: $bearerToken")
+                    Log.d("get average", "Request URL: ${client.request().url}")
+
+                    client.enqueue(object : Callback<GetSleepDurResponse>{
+                        override fun onResponse(
+                            call: Call<GetSleepDurResponse>,
+                            response: Response<GetSleepDurResponse>
+                        ) {
+                            _isLoading.value = false
+                            if (response.isSuccessful) {
+                                _valueAverage.value = response.body()?.data
+                                Log.e("get average", "onSucces ${response.body()}")
+                            }else {
+                                Log.e(
+                                    "get average",
+                                    "onFailure Response ${it} ${response.code()} - ${response.message()} - ${
+                                        response.errorBody()?.string()
+                                    }"
+                                )
+                            }
+                        }
+
+                        override fun onFailure(call: Call<GetSleepDurResponse>, t: Throwable) {
+                            _isLoading.value = false
+                            Log.e("get average unreachable", "onFailure ${t.message}")
+                        }
+
+                    })
+                }
+            }
+        }
     }
 
     // Function to update chart data based on selected date range

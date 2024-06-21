@@ -64,4 +64,9 @@ interface ApiService {
         @Path("id") id: String,
         @Body requestBody: RequestUpdatePassword
     ): Call<ResponseUpdatePassword>
+
+    @GET("/user/data")
+    fun getAverageData(
+        @Header("Authorization") token: String,
+    ): Call<GetSleepDurResponse>
 }
