@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,6 +15,8 @@ import com.meone.montir.databinding.ActivitySleepScoreBinding
 import com.meone.montir.view.music.MusicActivity
 import com.meone.montir.view.sleep.SleepTrackerActivity
 import com.meone.montir.view.profile.ProfileActivity
+import com.meone.montir.viewModel.ViewModelFactory
+import com.meone.montir.viewModel.music.DetailMusicViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -23,6 +26,9 @@ class SleepScoreActivity : AppCompatActivity() {
     private lateinit var mSleepScore: TextView
     private lateinit var mSleepDur: TextView
     private lateinit var mWake:TextView
+    private val detailViewModel by viewModels<DetailMusicViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +55,14 @@ class SleepScoreActivity : AppCompatActivity() {
             mSleepScore.text = getSleepScore.toString()
             mSleepDur.text = "${getSleepDur.toString()} Hours"
             mWake.text = String.format("%02d:%02d", hours, minutes)
+        }
+
+        detailViewModel.getMusic().observe(this) {
+            if (it != null) {
+                binding.apply {
+                    tvMusicTitle.text = it.musicName
+                }
+            }
         }
 
         binding.apply {
