@@ -86,6 +86,7 @@ class StopTrackerActivity : AppCompatActivity() {
                     putExtra("SLEEP_DURATION", it.data.sleepDuration.toString())
                     putExtra("BMI", it.data.bmi.toString())
                     putExtra("WAKE_UP_TIME", currentTime)
+                    putExtra("STRESS_LEVEL", it.data.stressLevel)
                 }
                 startActivity(intent)
             }

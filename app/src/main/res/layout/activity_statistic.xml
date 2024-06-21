@@ -316,7 +316,7 @@
                                                             android:background="@color/gray">
 
                                                                 <TextView
-                                                                    android:id="@+id/titleAverageWakeUpTime"
+                                                                    android:id="@+id/titleAverageStressLevel"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginTop="10dp"
@@ -330,10 +330,10 @@
                                                                     app:layout_constraintTop_toTopOf="parent" />
 
                                                                 <TextView
-                                                                    android:id="@+id/subTitleAverageWakeUpTime"
+                                                                    android:id="@+id/subTitleAverageStressLevel"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text="Sleep Time"
+                                                                    android:text="Stress Level"
                                                                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                                                     android:textColor="@color/white"
                                                                     android:textSize="16dp"
@@ -341,11 +341,11 @@
                                                                     app:layout_constraintEnd_toEndOf="parent"
                                                                     app:layout_constraintHorizontal_bias="0.159"
                                                                     app:layout_constraintStart_toStartOf="parent"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageWakeUpTime"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/titleAverageStressLevel"
                                                                     app:layout_constraintVertical_bias="0.025" />
 
                                                                 <TextView
-                                                                    android:id="@+id/AverageWakeUpTime"
+                                                                    android:id="@+id/AverageStressLevel"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:text="@string/empty"
@@ -355,7 +355,7 @@
                                                                     app:layout_constraintEnd_toEndOf="parent"
                                                                     app:layout_constraintHorizontal_bias="0.159"
                                                                     app:layout_constraintStart_toStartOf="parent"
-                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageWakeUpTime"
+                                                                    app:layout_constraintTop_toBottomOf="@+id/subTitleAverageStressLevel"
                                                                     app:layout_constraintVertical_bias="0.8" />
 
                                                         </androidx.constraintlayout.widget.ConstraintLayout>

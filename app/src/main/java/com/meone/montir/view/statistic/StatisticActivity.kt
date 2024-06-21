@@ -57,6 +57,10 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
     private lateinit var mClickDateEnd: CardView
     private lateinit var mDisplayDateEnd: TextView
     private lateinit var mDateEndSetListener: DatePickerDialog.OnDateSetListener
+    private lateinit var mSleepScore: TextView
+    private lateinit var mSleepDur: TextView
+    private lateinit var mScoreBMI: TextView
+    private lateinit var mStress: TextView
 
     private val viewModel by viewModels<StatisticViewModel> {
         ViewModelFactory.getInstance(this)
@@ -68,6 +72,45 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
         setContentView(binding.root)
 
+        val getSleepScore = intent.getStringExtra("QUALITY_SCORE")
+        val getSleepDur = intent.getStringExtra("SLEEP_DURATION")
+        val getWake = intent.getStringExtra("WAKE_UP_TIME")
+
+        mSleepScore = findViewById(R.id.AverageSleepScore)
+        mSleepDur = findViewById(R.id.AverageSleepDuration)
+        mScoreBMI = findViewById(R.id.AverageSleepTime)
+        mStress = findViewById(R.id.AverageStressLevel)
+
+        var aveSleepScore:String = ""
+        var aveSleepDur:String = ""
+        var scoreBMI:String = ""
+        var aveStress:String = ""
+
+        viewModel.getAverageData()
+        viewModel.valueAverage.observeForever{ averageList ->
+            var sleepScoreTotal:Float = 0F
+            var sleepDurTotal:Float = 0F
+            var stressTotal:Float = 0F
+
+
+            if (averageList != null) { averageList.map { vals ->
+                    sleepScoreTotal = vals.quality_score + sleepScoreTotal
+                    sleepDurTotal = vals.sleep_duration + sleepDurTotal
+                    stressTotal = vals.stress_level + stressTotal
+//                    Log.d("ISIAN AVERAGE SLEEP SCORE", vals.quality_score.toString())
+                }
+                aveSleepScore = String.format("%.2f",(sleepScoreTotal/averageList.size) )
+                aveSleepDur = String.format("%.2f", (sleepDurTotal/averageList.size))
+                scoreBMI = averageList[0].bmi.toString()
+                aveStress = String.format("%.2f", (stressTotal/averageList.size))
+            }
+            mSleepScore.text = aveSleepScore
+            mSleepDur.text = aveSleepDur
+            mStress.text = aveStress
+            mScoreBMI.text = scoreBMI
+
+        }
+
         //initialize chart
         chart = findViewById(R.id.chart1)
 
@@ -77,43 +120,26 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
             if (data.isEmpty()) {
                 val dataSet = LineDataSet(data, "Sleep Duration")
                 dataSet.color = Color.BLUE // Example color customization
-
                 val barData = LineData(dataSet)
-//        barData.barWidth = 0.9f
                 chart.data = barData
-//        chart.setFitBars(true)
                 chart.invalidate() // Refresh the chart
             } else {
                 updateBarChart(data)
             }
         })
 
-//        chart.setNoDataText("No Data")
-
-//        viewModel.updateChartData("2024-06-01", "2024-06-07")
-        //setup chart data
-//        val data = dataValue1()
-//        val barDataSet1 = BarDataSet(data, "Data Set 1")
-//        val dataSets = ArrayList<IBarDataSet>()
-//        dataSets.add(barDataSet1)
-//
-//        val xAxis: XAxis = chart.xAxis
-//        xAxis.valueFormatter = MyAxisValueFormatter()
-
-
-//        chart.setNoDataText("Not Enough Record Yet for this week")
-//        val description = Description()
-//        description.text = "Sleep Durations"
-//        chart.description = description
-//
-//
-//        val barData = BarData(dataSets)
-//        chart.data = barData
-//        chart.invalidate()
-
         binding.apply {
             sleepscoreBtn.setOnClickListener {
-                startActivity(Intent(this@StatisticActivity, SleepScoreActivity::class.java))
+//                startActivity(Intent(this@StatisticActivity, SleepScoreActivity::class.java))
+                val intent = Intent(this@StatisticActivity, SleepScoreActivity::class.java)
+                if (!getSleepScore.isNullOrBlank() and !getSleepScore.isNullOrBlank() and !getWake.isNullOrBlank()){
+                    intent.apply {
+                        putExtra("SLEEPSCORE", getSleepScore.toString())
+                        putExtra("SLEEPDUR", getSleepDur.toString())
+                        putExtra("WAKE_UP", getWake.toString())
+                    }
+                }
+                startActivity(intent)
             }
             musicButton.setOnClickListener {
                 startActivity(Intent(this@StatisticActivity, MusicActivity::class.java))
@@ -208,9 +234,7 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
         dataSet.color = Color.BLUE // Example color customization
 
         val barData = LineData(dataSet)
-//        barData.barWidth = 0.9f
         chart.data = barData
-//        chart.setFitBars(true)
         chart.invalidate() // Refresh the chart
     }
 
@@ -255,3 +279,4 @@ class StatisticActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
 
 }
+

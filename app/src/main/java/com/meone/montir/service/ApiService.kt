@@ -1,6 +1,7 @@
 package com.meone.montir.service
 
 import com.meone.montir.response.GetSleepDur
+import com.meone.montir.response.GetSleepDurResponse
 import com.meone.montir.response.LoginResponse
 import com.meone.montir.response.RegisterResponse
 import com.meone.montir.response.ResponseDailyData
@@ -31,12 +32,13 @@ interface ApiService {
     @GET("audios")
     fun getAudios(): Call<ResponseMusic>
 
-    @GET("dailydata")
+    @GET("/dailydata")
     fun getSleepDuration(
+        @Header("Authorization") token: String,
         @Query("startDate") startDate: String,
         @Query("endDate") endDate: String
-    ): Call<List<GetSleepDur>>
-  
+    ): Call<GetSleepDurResponse>
+
     @POST("users/daily")
     fun createDaily(
         @Header("Authorization") token: String,
@@ -62,4 +64,9 @@ interface ApiService {
         @Path("id") id: String,
         @Body requestBody: RequestUpdatePassword
     ): Call<ResponseUpdatePassword>
+
+    @GET("/user/data")
+    fun getAverageData(
+        @Header("Authorization") token: String,
+    ): Call<GetSleepDurResponse>
 }

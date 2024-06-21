@@ -49,6 +49,9 @@ class DetailProfileActivity : AppCompatActivity() {
         }
 
         binding.apply {
+            backBtn.setOnClickListener{
+                startActivity(Intent(this@DetailProfileActivity, ProfileActivity::class.java))
+            }
             editBtn.setOnClickListener {
                 val city = nameEditText.text.toString()
                 val age = ageEditText.text.toString().toInt()

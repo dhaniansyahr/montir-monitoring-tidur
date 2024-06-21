@@ -49,21 +49,9 @@ class AccountActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            musicButton.setOnClickListener {
-                startActivity(Intent(this@AccountActivity, MusicActivity::class.java))
-            }
-
-            statsButton.setOnClickListener{
-                startActivity(Intent(this@AccountActivity, StatisticActivity::class.java))
-            }
-
-            profileButton.setOnClickListener{
+            backBtn.setOnClickListener({
                 startActivity(Intent(this@AccountActivity, ProfileActivity::class.java))
-            }
-
-            sleepButton.setOnClickListener{
-                startActivity(Intent(this@AccountActivity, SleepTrackerActivity::class.java))
-            }
+            })
 
             editPassBtn.setOnClickListener {
                 val username = nameEditText.text.toString()
